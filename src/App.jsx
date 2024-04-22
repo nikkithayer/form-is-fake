@@ -24,7 +24,7 @@ function App() {
         </button>
         <Example />
         <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
+          Edit <code>src/App.jsx</code> and save to test test github and HMR
         </p>
       </div>
       <p className="read-the-docs">
