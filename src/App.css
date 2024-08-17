@@ -1,42 +1,127 @@
 #root {
-  max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0;
   text-align: center;
+  width: 100%;
+
+  font-size: 18px;
+
+    --yellow: #E1B627;
+    --green: #2B643F;
+    --red: #F04C32;
+    --melon: #F5886F;
+    --blue: #1F54A5;
+    --black: #1F252B;
+    --white: #DFDED7;
+    --pink: #F27DAC;
+    
+    background-color: var(--white);
+    color: var(--black);
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+h1{
+  font-size: 36px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h2{
+  color: var(--red);
+  margin: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.header{
+  background-image: url(../public/noise.png);
+  padding: 32px;
 }
 
-.card {
-  padding: 2em;
+.section {
+  width: 100%;
+  padding: 32px 0;
 }
 
-.read-the-docs {
-  color: #888;
+.section:nth-child(1){
+  background-color: var(--white);
+}
+.section:nth-child(2){
+  background-color: var(--blue);
+  color: var(--white);
+}
+.section:nth-child(3){
+  background-color: var(--black);
+  color: var(--white);
+}
+
+.section .holder{
+  max-width: 1200px;
+  margin: 0 auto;
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.section:nth-child(even) .holder{
+  flex-direction: row-reverse;
+}
+
+.section .holder .content{
+  flex: auto;
+  width: 620px;
+  text-align: left;
+  padding: 32px;
+}
+
+.button{
+  padding: 12px 24px;
+  border-radius: 50px;
+}
+
+.section:nth-child(1) .button{
+  background-color: var(--pink);
+  color: var(--white);
+}
+
+.section:nth-child(1) h1{
+  color: var(--pink);
+}
+
+.section:nth-child(2) .button{
+  background-color: var(--melon);
+  color: var(--white)
+}
+
+.section:nth-child(2) h1{
+  color: var(--melon);
+}
+
+.section:nth-child(3) .button{
+  background-color: var(--yellow);
+  color: var(--black)
+}
+
+.section:nth-child(3) h1{
+  color: var(--yellow);
+}
+
+.section-column{
+  display: flex;
+  max-width: 1200px;
+  margin: 48px auto;
+  justify-content: space-evenly;
+}
+.column{
+  width: 30%;
+}
+
+.section-column h1{
+  font-size: 30px;
+}
+
+.section-column .column:nth-child(even) h1{
+  color: var(--red)
+}
+
+.section-column .column:nth-child(even) h2{
+  color: var(--black)
 }
