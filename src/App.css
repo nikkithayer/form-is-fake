@@ -114,6 +114,23 @@ h2{
   width: 30%;
 }
 
+.what-else {
+  text-align: left;
+  font-family: Libre Franklin;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 43.63px;
+  text-align: left;
+  color: #1F54A5;
+}
+
+.what-container {
+  max-width: 1200px;
+  margin: 48px auto;
+  margin-top: 50px;
+  padding-left: 100px;
+}
+
 .section-column h1{
   font-size: 30px;
 }
