@@ -1,0 +1,29 @@
+.columns-container{
+  max-width: 1200px;
+  margin: 48px auto;
+}
+
+.section-column{
+  display: grid;
+  gap: 60px;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 60px;
+}
+
+.section-column h1{
+  font-size: 1.75em;
+  margin-top: 32px;
+}
+
+.section-column h2{
+  font-size: 1.4em;
+  color: var(--red);
+}
+
+.section-column .column:nth-child(even) h1{
+  color: var(--red)
+}
+
+.section-column .column:nth-child(even) h2{
+  color: var(--black)
+}

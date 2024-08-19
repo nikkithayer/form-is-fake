@@ -1,5 +1,5 @@
-import React from 'react'
-import Column from './Column'
+import Column from '../Column/Column'
+import './Columns.css'
 
 function Columns() {
 
@@ -34,14 +34,14 @@ function Columns() {
 
   return (
     <>
-    <div className="what-container">
-    <h2 className="what-else">What else have ya got?</h2>
-    </div>
+    <div className="columns-container">
+      <h1>What else have ya got?</h1>
     <div className="section-column">
       <Column columnInfo={palamoDrafthouse} />
       <Column columnInfo={danceParty} />
       <Column columnInfo={greatestParty} />
       </div>
+    </div>
     </>
   )
 }

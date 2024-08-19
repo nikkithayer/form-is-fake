@@ -1,0 +1,40 @@
+.signup-form-holder{
+  background-color: var(--black);
+  color: var(--white);
+  width: 100%;
+  padding: 32px 0;
+  text-align: left;
+}
+
+.signup-form{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+form{
+  max-width: 500px;
+  width: 100%;
+}
+
+
+input{
+  display:block;
+  width: 100%;
+  margin: 4px 0 16px 0;
+  padding: 8px;
+  background-color: var(--white);
+  border: 1px solid transparent;
+  border-radius: 3px;
+}
+
+input[type="checkbox"]{
+  display: inline;
+  width: auto;
+  scale: 1.4;
+  margin-right: 8px;
+}
+
+.signup-form button{
+  background-color: var(--pink);
+  width: 100%;  
+}

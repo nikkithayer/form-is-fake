@@ -1,6 +1,13 @@
+import Button from '../Button/Button'
+import './Section.css'
 
 function Section({ProjectInfo}) {
   const {title, description, image, link, linkText} = ProjectInfo
+  const buttonInfo = {link, linkText}
+  
+  function Content (currentContent) {
+    return currentContent.map((paragraph) => <p>{paragraph}</p>);
+  }
 
   return (
     <>
@@ -8,8 +15,8 @@ function Section({ProjectInfo}) {
         <div className="holder">
           <div className="content">
             <h1>{title}</h1>
-            <p>{description}</p>
-            <a className="button" href={link}>{linkText}</a>
+            {Content(description)}
+            <Button buttonInfo={buttonInfo} />
           </div>
           {image && <img src={image} />}
         </div>

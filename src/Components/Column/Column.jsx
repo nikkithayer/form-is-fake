@@ -5,7 +5,6 @@ function Content (currentContent) {
     return currentContent.map((paragraph) => <p>{paragraph}</p>);
 }
 
-
     return (
     <div className="column">
     <img src={image} />
