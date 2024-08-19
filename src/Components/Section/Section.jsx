@@ -13,12 +13,12 @@ function Section({ProjectInfo}) {
     <>
       <div className="section">
         <div className="holder">
-          <div className="content">
+        {image && <img src={image} />}
+        <div className="content">
             <h1>{title}</h1>
             {Content(description)}
             <Button buttonInfo={buttonInfo} />
           </div>
-          {image && <img src={image} />}
         </div>
       </div>
     </>

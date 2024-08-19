@@ -38,3 +38,15 @@ input[type="checkbox"]{
   background-color: var(--pink);
   width: 100%;  
 }
+
+@media screen and (max-width:1200px){
+ .signup-form{
+  width: 100%;
+  padding: 32px;
+  box-sizing: border-box;
+ }
+
+ .signup-form input{
+
+ }
+}

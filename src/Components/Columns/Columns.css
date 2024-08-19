@@ -1,6 +1,6 @@
 .columns-container{
-  max-width: 1200px;
-  margin: 48px auto;
+  width: 100%;
+  padding: 32px 0;
 }
 
 .section-column{
@@ -8,6 +8,9 @@
   gap: 60px;
   grid-template-columns: 1fr 1fr;
   margin-top: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+
 }
 
 .section-column h1{
@@ -26,4 +29,24 @@
 
 .section-column .column:nth-child(even) h2{
   color: var(--black)
+}
+
+.section-column img{
+  width:100%;
+  max-width: 500px;
+}
+
+
+@media screen and (max-width:1200px){
+  
+  .columns-container h1{
+    padding: 32px;
+  }
+
+  .section-column {
+    display: block;
+  }
+  .column{
+    padding: 32px;
+  }
 }

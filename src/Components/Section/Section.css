@@ -19,13 +19,13 @@
   max-width: 1200px;
   margin: 0 auto;
   display:flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   flex-wrap: wrap;
   align-items: center;
 }
 
 .section:nth-child(even) .holder{
-  flex-direction: row-reverse;
+  flex-direction: row;
 }
 
 .section .holder .content{
@@ -60,4 +60,15 @@
 
 .section:nth-child(3) h1{
   color: var(--yellow);
+}
+
+@media screen and (max-width:1200px){
+  .section{
+    padding: 0;
+  }
+
+  img{
+    margin: 0 auto;
+    width: 100%;
+  }
 }
