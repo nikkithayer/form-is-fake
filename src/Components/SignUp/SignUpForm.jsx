@@ -46,6 +46,9 @@ if (!submitted) return (
         </div>
         </div>
     )
+else return (
+    <h1>Thanks for signing up! You'll be hearing from us soon! (non-threatening)</h1>
+)
 }
 
 export default SignUpForm
