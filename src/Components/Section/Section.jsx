@@ -2,8 +2,13 @@ import Button from '../Button/Button'
 import './Section.css'
 
 function Section({ProjectInfo}) {
-  const {title, description, image, link, linkText} = ProjectInfo
-  const buttonInfo = {link, linkText}
+  const {title, description, image, link, linkText, buttonFunction} = ProjectInfo
+  var buttonInfo = {link, linkText}
+  link && (buttonInfo.link = link)
+  linkText && (buttonInfo.linkText = linkText)
+  buttonFunction && (buttonInfo.buttonFunction = buttonFunction)
+  
+
   
   function Content (currentContent) {
     return currentContent.map((paragraph) => <p>{paragraph}</p>);

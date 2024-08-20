@@ -1,22 +1,33 @@
 import './SignUpForm.css'
 import { useState } from 'react'
 
-function SignUpForm() {
+function SignUpForm({Signup}) {
+
+    console.log(Signup)
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
+    const [playtest, setPlaytest] = useState(true)
     const [submitted, setSubmitted] = useState(false)
+
+    const handleCheckChange = () => {
+        setChecked(!checked);
+      };
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        const newSignup = {
+            name: name,
+            email: email,
+            playtest: playtest
+        }
+        Signup(newSignup)
+        //error handling
 
-        //error handling goes here
-
-        // fetch request goes here
 
         setSubmitted(true)
     }
 
-    return (
+if (!submitted) return (
         <div className='signup-form-holder'><div className='signup-form'>
             <h1>This form is real.</h1>
             <p>Sign up to our newsletter to hear about updates, playtests, key dates, things of that nature. Not too much.</p>
@@ -27,7 +38,7 @@ function SignUpForm() {
             <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
             <label>E-mail: </label>
             <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-            <input type="checkbox" id="playtest" name="playtest" value="true" />
+            <input type="checkbox" id="playtest" name="playtest" checked={playtest} onChange={handleCheckChange} />
             <label htmlFor="playtest">I would be interested in playtesting work in progress.</label>
             <br></br>
             <button type="submit">Submit</button>

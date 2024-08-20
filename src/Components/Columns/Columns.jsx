@@ -5,7 +5,7 @@ function Columns() {
 
   const palamoDrafthouse = {
     title: "Palamo Drafthouse",
-    image: "../public/palamodrafthouse.png",
+    image: "/palamodrafthouse.png",
     year: "(2020-?)",
     content: ["Why invite friends over to chill and watch a movie when you could invite friends over to watch a NEW FILM FESTIVAL EVERY TIME?",
     "In the spirit of high concept hangouts, we spent the pandemic programming monthly 12 hour marathons for friends to drop into and out of.",
@@ -15,7 +15,7 @@ function Columns() {
 
   const danceParty = {
     title: "Dance Party at the End of the World",
-    image: "../public/dancepartyattheendoftheworld.png",
+    image: "/dancepartyattheendoftheworld.png",
     year: "(2006-?)",
     content: ["Every October, from 2006 to 2013 David Daw held a dance party with a twist - the radio broadcast from Orson Welles’ War of the Worlds is real, and the world is about to end.",
     "Over 8 years, the production expanded to include sketches, interactive tech, and a punch bowl set on fire (which ruled).",
@@ -24,7 +24,7 @@ function Columns() {
 
   const greatestParty = {
     title: "The Greatest Party Ever",
-    image: "../public/greatestpartyever.png",
+    image: "/greatestpartyever.png",
     year: "(2012)",
     content: ["Invitees were given one objective: make people who weren’t there believe that this was the wildest, most fun party with the coolest people ever, and in the process... maybe throw the wildest, most fun party with the coolest people ever?",
     "We made a party out of staging the moments that you always hoped would be captured organically. Folks brought props, staged scandals and debauchery, and had a great time doing it. Did they have the greatest time doing it? We’ll never tell."]
