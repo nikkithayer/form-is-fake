@@ -1,0 +1,23 @@
+.about{
+  max-width: 1200px;
+  margin: 60px auto;
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 0 32px;
+}
+.about h1{
+  color: var(--red);
+  width: 100%;
+  text-align: left;
+  margin-bottom: 32px;
+}
+.about p{
+  text-align: left;
+}
+
+.about img{
+  max-width:600px;
+  width: 100%;
+}

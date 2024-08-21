@@ -22,7 +22,7 @@ function Section({ProjectInfo}) {
         <div className="content">
             <h1>{title}</h1>
             {Content(description)}
-            <Button buttonInfo={buttonInfo} />
+            {linkText && <Button buttonInfo={buttonInfo} />}
           </div>
         </div>
       </div>
