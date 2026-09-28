@@ -25,10 +25,10 @@ function SignUpForm() {
     return (
         <div className='signup-form-holder' id='signup'><div className='signup-form container'>
             {status === 'submitted' ? (
-                <h1>Thanks for signing up! You’ll be hearing from us soon! (non-threatening)</h1>
+                <h2 className="title">Thanks for signing up! You’ll be hearing from us soon! (non-threatening)</h2>
             ) : (
                 <>
-                <h1>This form is real.</h1>
+                <h2 className="title">This form is real.</h2>
                 <p>Sign up to our newsletter to hear about updates, playtests, key dates, things of that nature. Not too much.</p>
 
                 <form onSubmit={handleSubmit}>

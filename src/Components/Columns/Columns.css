@@ -9,21 +9,21 @@
   grid-template-columns: 1fr 1fr;
 }
 
-.section-column h1{
+.section-column .title{
   font-size: 1.75em;
   margin-top: var(--space-m);
 }
 
-.section-column h2{
+.section-column .year{
   font-size: 1.4em;
   color: var(--red);
 }
 
-.section-column .column:nth-child(even) h1{
+.section-column .column:nth-child(even) .title{
   color: var(--red)
 }
 
-.section-column .column:nth-child(even) h2{
+.section-column .column:nth-child(even) .year{
   color: var(--black)
 }
 
@@ -35,7 +35,7 @@
 
 @media screen and (max-width:1200px){
   
-  .columns-container h1{
+  .columns-container .title{
     padding: var(--space-m);
   }
 
