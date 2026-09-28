@@ -1,5 +1,5 @@
 .signup-form-holder{
-  background-color: var(--black);
+  --section-bg: var(--black);
   color: var(--white);
   width: 100%;
   padding: var(--space-m) 0;

@@ -1,8 +1,7 @@
 .about{
-  min-height: 100vh;
+  --section-bg: var(--white);
   padding: var(--space-xl) var(--space-m);
   box-sizing: border-box;
-  scroll-snap-align: start;
   text-align: left;
 }
 

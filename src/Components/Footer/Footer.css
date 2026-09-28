@@ -1,12 +1,9 @@
 .footer{
-  background-color: var(--black);
-  color: var(--white);
+  background-color: var(--white);
+  color: var(--black);
   padding: var(--space-m);
-  border-top: 2px solid var(--white);
-}
-
-.footer a{
-  color: var(--yellow);
+  /* Room for the signup section's angled cut above. */
+  padding-top: calc(var(--space-m) + var(--cut-clearance));
 }
 
 .footer-small{

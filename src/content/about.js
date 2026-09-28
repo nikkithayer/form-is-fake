@@ -1,5 +1,5 @@
 /*
-  Text for the About slide.
+  Text for the About section.
 
   body and each section's body are lists of paragraphs written in Markdown,
   so you can use *italics*, **bold**, and [links](https://example.com).

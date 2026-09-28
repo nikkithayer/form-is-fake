@@ -15,11 +15,6 @@
   color: var(--black);
 }
 
-/* Slides gently settle into place when a scroll stops near one. */
-html {
-  scroll-snap-type: y proximity;
-}
-
 body {
   margin: 0;
   min-width: 320px;

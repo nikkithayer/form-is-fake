@@ -10,17 +10,31 @@ function startOfToday (now) {
   return new Date(now.getFullYear(), now.getMonth(), now.getDate())
 }
 
-// Shows that haven't closed yet, soonest-closing first, each marked
-// 'playing' (already open, or no start given) or 'upcoming'.
-export function currentShows (shows, now = new Date()) {
+const DAY_MS = 24 * 60 * 60 * 1000
+
+function statusOf (show, today, wrappedDays) {
+  const end = parseDay(show.end)
+  if (end < today) {
+    const daysSince = Math.round((today - end) / DAY_MS)
+    return daysSince <= wrappedDays ? 'wrapped' : null
+  }
+  return show.start && parseDay(show.start) > today ? 'upcoming' : 'playing'
+}
+
+// Shows to list, each marked 'playing' (open, or no start given), 'upcoming',
+// or 'wrapped' (closed within the last `wrappedDays` days). Open and upcoming
+// shows come first, soonest-closing first; then wrapped shows, most recent
+// first. Anything that closed longer ago is left out.
+export function currentShows (shows, now = new Date(), wrappedDays = 0) {
   const today = startOfToday(now)
-  return shows
-    .filter((show) => parseDay(show.end) >= today)
-    .map((show) => ({
-      ...show,
-      status: show.start && parseDay(show.start) > today ? 'upcoming' : 'playing',
-    }))
-    .sort((a, b) => parseDay(a.end) - parseDay(b.end))
+  const listed = shows
+    .map((show) => ({ ...show, status: statusOf(show, today, wrappedDays) }))
+    .filter((show) => show.status)
+  const byEnd = (a, b) => parseDay(a.end) - parseDay(b.end)
+  return [
+    ...listed.filter((show) => show.status !== 'wrapped').sort(byEnd),
+    ...listed.filter((show) => show.status === 'wrapped').sort((a, b) => byEnd(b, a)),
+  ]
 }
 
 export function formatDay (day) {

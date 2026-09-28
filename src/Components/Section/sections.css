@@ -1,0 +1,82 @@
+/*
+  Each project's own look, keyed by its id in content/home.js.
+  These are starting points; the real artwork and motion for each section
+  goes here. To adjust a section's layout,
+  set --section-art-size, --section-text-size, or --section-align in its block
+  (see Section.css).
+
+  Every section has an angled bottom with its own automatic angle. To set one
+  by hand, add --cut-left / --cut-right to its block (see styles/angled.css).
+  Give each section a --section-bg that contrasts with its neighbors, or the
+  angle won't show.
+*/
+
+.section-art{
+  position: relative;
+  z-index: 2; /* above the angled cuts, so art can spill across them */
+}
+/* Text always stays on top, so spilling art never covers it. */
+.section-text{
+  position: relative;
+  z-index: 3;
+}
+
+.section--iron-city{
+  --section-bg: var(--blue);
+  color: var(--white);
+}
+.section--iron-city .title{ color: var(--melon); }
+
+.section--dance-party{
+  --section-bg: var(--black);
+  color: var(--white);
+}
+/* The red spiral slowly turning behind the key art (decorative only). */
+.section--dance-party .section-art::before{
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  z-index: -1;
+  background: url(/danceparty-spiral.svg) center / contain no-repeat;
+  animation: spin 60s linear infinite;
+}
+@media (prefers-reduced-motion: reduce){
+  .section--dance-party .section-art::before{
+    animation: none;
+  }
+}
+
+.section--palamo-drafthouse{
+  --section-bg: var(--white);
+}
+.section--palamo-drafthouse .subtitle{ color: var(--red); }
+
+.section--greatest-party{
+  --section-bg: var(--yellow);
+}
+.section--greatest-party .title{ color: var(--blue); }
+.section--greatest-party .subtitle{ color: var(--black); }
+
+.section--reverse-murder-mystery{
+  --section-bg: var(--green);
+  color: var(--white);
+}
+.section--reverse-murder-mystery .title{ color: var(--yellow); }
+
+.section--beach-episode{
+  --section-bg: var(--black);
+  color: var(--white);
+}
+.section--beach-episode .title{ color: var(--yellow); }
+.section--beach-episode .btn{
+  background-color: var(--yellow);
+  color: var(--black);
+}
+
+@keyframes spin{
+  to{ rotate: 360deg; }
+}

@@ -1,26 +1,26 @@
 /*
   Text for the site. (Now Playing shows live in nowPlaying.json.)
 
-  Each project in `projects` becomes a full-height slide. Fields:
+  Each project in `projects` becomes a section on the page. Fields:
     id        Short name used in the page address (#iron-city) and to give
-              the slide its own styles in Components/Slide/slides.css.
+              the section its own styles in Components/Section/sections.css.
     title     Heading text.
     subtitle  Small line under the title, like a year.
     body      A list of paragraphs. Each one is Markdown, so you can write
               *italics*, **bold**, and [links](https://example.com).
-    image     The slide's main artwork: a path to a file in /public.
+    image     The section's main artwork: a path to a file in /public.
     imageAlt  A short description of the image for screen readers.
     photos    Optional list of extra pictures: { src: "/file.jpg", alt: "..." }
     cta       Optional button: { label: "Button text", href: "..." }
               href can be a spot on this page ("#signup"), a page on this
               site ("/about"), or any other URL (opens in a new tab).
     layout    Where the art sits: "art-left" (the default), "art-right", or
-              "art-top" (full width above the text, for wide art). Slides
+              "art-top" (full width above the text, for wide art). Sections
               without an image are text-only. On phones, art is always on top.
-              To fine-tune sizes and alignment, see Components/Slide/Slide.css.
+              To fine-tune sizes and alignment, see Components/Section/Section.css.
 
   Links inside body text follow the same rules as cta hrefs.
-  Slides appear in the order listed here.
+  Sections appear in the order listed here.
 */
 
 export const instagram = {
@@ -29,10 +29,17 @@ export const instagram = {
 }
 
 export const nowPlaying = {
+  // The badge on each show (and the section's heading for screen readers).
   title: "Now Playing",
-  upcomingLabel: "Coming soon",
   ticketLabel: "Get tickets",
-  // Shown when no show in nowPlaying.json is current or upcoming.
+  // After a show's end date it stays up this many days with this badge and
+  // button instead of the ticket link, then drops off.
+  wrapped: {
+    label: "Just wrapped",
+    days: 14,
+    cta: { label: "Catch the next one", href: "#signup" },
+  },
+  // Shown when no show in nowPlaying.json is current, upcoming, or just wrapped.
   empty: {
     title: "Nothing on right now",
     body: "But something’s always brewing. Get on the list and we’ll tell you the moment the next one opens.",
@@ -41,6 +48,14 @@ export const nowPlaying = {
 }
 
 export const projects = [
+  {
+    id: "reverse-murder-mystery",
+    title: "Reverse Murder Mystery Party",
+    // TODO: real description, year, and artwork.
+    body: [
+      "Details coming soon.",
+    ],
+  },
   {
     id: "iron-city",
     title: "Iron City",
@@ -52,7 +67,6 @@ export const projects = [
     image: "/ironcity.png",
     imageAlt: "A glowing fairy hand reaches toward a wireframe sculpture over a desk of legal paperwork and a Greystone/Canning “Fae Arbitration Experts” mug",
     layout: "art-left",
-    cta: { label: "I'm intrigued and wish to subscribe to your newsletter.", href: "#signup" },
   },
   {
     id: "dance-party",
@@ -68,20 +82,6 @@ export const projects = [
     layout: "art-right",
   },
   {
-    id: "palamo-drafthouse",
-    title: "Palamo Drafthouse",
-    subtitle: "(2020-?)",
-    body: [
-      "Why invite friends over to chill and watch a movie when you could invite friends over to watch a NEW FILM FESTIVAL EVERY TIME?",
-      "In the spirit of high concept hangouts, we spent the pandemic programming monthly 12 hour marathons for friends to drop into and out of.",
-      "Did we make custom film posters for every meetup? You already know we made custom posters for every meetup.",
-      "This debacle culminated (FOR NOW) in a double feature at Videotheque in Highland Park with silly little trailers, secret gifts, and tons of snacks.",
-    ],
-    image: "/palamodrafthouse.png",
-    imageAlt: "Collage of Palamo Drafthouse: a neon “Palamo Drafthouse Presents” title card, custom movie-list posters, friends setting up a video-store room, and a snack table",
-    layout: "art-left",
-  },
-  {
     id: "greatest-party",
     title: "The Greatest Party Ever",
     subtitle: "(2012)",
@@ -94,12 +94,18 @@ export const projects = [
     layout: "art-right",
   },
   {
-    id: "reverse-murder-mystery",
-    title: "Reverse Murder Mystery Party",
-    // TODO: real description, year, and artwork.
+    id: "palamo-drafthouse",
+    title: "Palamo Drafthouse",
+    subtitle: "(2020-?)",
     body: [
-      "Details coming soon.",
+      "Why invite friends over to chill and watch a movie when you could invite friends over to watch a NEW FILM FESTIVAL EVERY TIME?",
+      "In the spirit of high concept hangouts, we spent the pandemic programming monthly 12 hour marathons for friends to drop into and out of.",
+      "Did we make custom film posters for every meetup? You already know we made custom posters for every meetup.",
+      "This debacle culminated (FOR NOW) in a double feature at Videotheque in Highland Park with silly little trailers, secret gifts, and tons of snacks.",
     ],
+    image: "/palamodrafthouse.png",
+    imageAlt: "Collage of Palamo Drafthouse: a neon “Palamo Drafthouse Presents” title card, custom movie-list posters, friends setting up a video-store room, and a snack table",
+    layout: "art-left",
   },
   {
     id: "beach-episode",

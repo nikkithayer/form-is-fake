@@ -2,6 +2,7 @@ import './SignUpForm.css'
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { addSignup } from '../../firebase-config'
+import { angleStyle } from '../../utils/angle'
 
 function SignUpForm({title, intro, thanks}) {
 
@@ -24,7 +25,7 @@ function SignUpForm({title, intro, thanks}) {
     }
 
     return (
-        <div className='signup-form-holder' id='signup'><div className='signup-form container'>
+        <section className='signup-form-holder angled' id='signup' style={angleStyle('signup')}><div className='signup-form container'>
             {status === 'submitted' ? (
                 <h2 className="title">{thanks}</h2>
             ) : (
@@ -48,7 +49,7 @@ function SignUpForm({title, intro, thanks}) {
                 </>
             )}
         </div>
-        </div>
+        </section>
     )
 }
 

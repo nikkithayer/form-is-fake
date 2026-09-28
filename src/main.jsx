@@ -8,6 +8,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './styles/tokens.css'
 import './styles/global.css'
+import './styles/angled.css'
 
 const router = createBrowserRouter([
   {
@@ -15,7 +16,7 @@ const router = createBrowserRouter([
     element:  <App />
   },
   {
-    // About is now a slide on the home page; keep old links working.
+    // About is now a section on the home page; keep old links working.
     path: "/about",
     element: <Navigate to="/#about" replace />
   }

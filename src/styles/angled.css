@@ -1,0 +1,49 @@
+/*
+  Angled section bottoms, cut-paper style.
+
+  Add class "angled" and style={angleStyle(name)} (utils/angle.js) to a
+  section and it gets a slanted bottom edge that overlaps the next section.
+  Every angled section gets its own default angle automatically. To set one by
+  hand, give the section's CSS:
+    --cut-left   how far the cut drops below the section on the left, e.g. 40px
+    --cut-right  the same on the right
+    --section-bg the section's background color (the cut uses it too)
+
+  The cut is a separate layer below the section, not a clip, so artwork can
+  spill across the edge: give it `position: relative; z-index: 2`.
+*/
+
+.angled{
+  --cut-l: calc(var(--cut-left, var(--cut-left-auto, 40px)) * var(--cut-scale, 1));
+  --cut-r: calc(var(--cut-right, var(--cut-right-auto, 120px)) * var(--cut-scale, 1));
+  position: relative;
+  background-color: var(--section-bg, var(--white));
+  /* Room at the top for the previous section's cut to overlap. */
+  padding-top: calc(var(--space-xl) + var(--cut-clearance));
+}
+
+.angled::after{
+  content: "";
+  position: absolute;
+  /* Starts 1px up so no hairline shows between the section and its cut. */
+  top: calc(100% - 1px);
+  left: 0;
+  right: 0;
+  height: calc(max(var(--cut-l), var(--cut-r)) + 1px);
+  z-index: 1;
+  pointer-events: none;
+  background-color: var(--section-bg, var(--white));
+  clip-path: polygon(0 0, 100% 0, 100% calc(var(--cut-r) + 1px), 0 calc(var(--cut-l) + 1px));
+}
+
+:root{
+  /* The deepest a cut can go (see MAX in utils/angle.js). */
+  --cut-clearance: 150px;
+}
+
+@media screen and (max-width:1200px){
+  :root{
+    --cut-scale: 0.5;
+    --cut-clearance: 75px;
+  }
+}

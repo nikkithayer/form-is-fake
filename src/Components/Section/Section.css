@@ -1,81 +1,79 @@
 /*
-  Layout shared by every slide. Per-project looks live in slides.css.
+  Layout shared by every section. Per-project looks live in sections.css.
 
-  A slide's `layout` (set in content/home.js) picks one of the arrangements
-  below. Each slide can fine-tune it in slides.css with these variables:
-    --slide-art-size   width of the art column  (default 1fr)
-    --slide-text-size  width of the text column (default 1fr)
-    --slide-align      vertical alignment of art and text: start, center, end
+  A section's `layout` (set in content/home.js) picks one of the arrangements
+  below. Each section can fine-tune it in sections.css with these variables:
+    --section-art-size   width of the art column  (default 1fr)
+    --section-text-size  width of the text column (default 1fr)
+    --section-align      vertical alignment of art and text: start, center, end
 */
-.slide{
+.section{
   position: relative;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: var(--space-l);
   padding: var(--space-xl) var(--space-m);
   box-sizing: border-box;
-  overflow: hidden;
-  scroll-snap-align: start;
+  overflow-x: clip; /* no sideways scroll, but art can spill across the angled bottom */
   text-align: left;
 }
 
-.slide-inner{
+.section-inner{
   position: relative;
   width: 100%;
   display: grid;
   gap: var(--space-l);
-  align-items: var(--slide-align, center);
+  align-items: var(--section-align, center);
 }
 
-.slide-art{ grid-area: art; }
-.slide-text{ grid-area: text; }
+.section-art{ grid-area: art; }
+.section-text{ grid-area: text; }
 
 /* Art on the left, text on the right. The default. */
-.slide-inner--art-left{
+.section-inner--art-left{
   grid-template-areas: "art text";
-  grid-template-columns: var(--slide-art-size, 1fr) var(--slide-text-size, 1fr);
+  grid-template-columns: var(--section-art-size, 1fr) var(--section-text-size, 1fr);
 }
 
 /* Text on the left, art on the right. */
-.slide-inner--art-right{
+.section-inner--art-right{
   grid-template-areas: "text art";
-  grid-template-columns: var(--slide-text-size, 1fr) var(--slide-art-size, 1fr);
+  grid-template-columns: var(--section-text-size, 1fr) var(--section-art-size, 1fr);
 }
 
 /* Art across the top, centered text below. For wide artwork. */
-.slide-inner--art-top{
+.section-inner--art-top{
   grid-template-areas: "art" "text";
   grid-template-columns: 1fr;
   justify-items: center;
 }
-.slide-inner--art-top .slide-text{
+.section-inner--art-top .section-text{
   max-width: 800px;
   text-align: center;
 }
 
 /* No artwork: the text gets a readable measure. */
-.slide-inner--text-only{
+.section-inner--text-only{
   grid-template-areas: "text";
   grid-template-columns: minmax(0, 800px);
 }
 
-.slide-art img{
+.section-art img{
   width: 100%;
   max-width: 560px;
 }
 
-.slide-inner--art-top .slide-art img{
+.section-inner--art-top .section-art img{
   max-width: 900px;
 }
 
-.slide .btn{
+.section .btn{
   background-color: var(--black);
   color: var(--white);
 }
 
-.slide-photos{
+.section-photos{
   width: 100%;
   display: flex;
   gap: var(--space-s);
@@ -85,25 +83,24 @@
   padding: 0;
 }
 
-.slide-photos img{
+.section-photos img{
   height: 220px;
   border-radius: var(--radius-s);
 }
 
 /* On narrow screens every layout stacks: art above text. */
 @media screen and (max-width:1200px){
-  .slide{
-    min-height: auto;
+  .section{
     padding: var(--space-l) var(--space-m);
   }
 
-  .slide .slide-inner{
+  .section .section-inner{
     grid-template-areas: none;
     grid-template-columns: 1fr;
   }
 
-  .slide .slide-art,
-  .slide .slide-text{
+  .section .section-art,
+  .section .section-text{
     grid-area: auto;
   }
 }

@@ -7,7 +7,7 @@ export const ctaShape = PropTypes.shape({
   href: PropTypes.string.isRequired,
 })
 
-// A project slide (see home.js).
+// A project section (see home.js).
 export const projectPropTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,

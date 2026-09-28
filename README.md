@@ -1,6 +1,6 @@
 # Form is Fake
 
-The website for Form is Fake, a two-person team making events, games, and spectacles by smushing mediums and genres together. It's a single page: what's playing now, a slide for each project, about us, and a newsletter signup.
+The website for Form is Fake, a two-person team making events, games, and spectacles by smushing mediums and genres together. It's a single page: what's playing now, a section for each project, about us, and a newsletter signup.
 
 Built with React, Vite, and React Router. Signups are stored in Firebase Firestore.
 
@@ -35,7 +35,7 @@ src/
 scripts/
   now-playing.mjs     Imports a show from an Eventbrite or Luma link
   Components/         One folder per component, each with its own CSS
-  Components/Slide/slides.css  Each project slide's own look
+  Components/Section/sections.css  Each project section's own look
   styles/
     tokens.css        Design tokens: colors, spacing, radii, widths
     global.css        Base element styles and shared classes
@@ -43,7 +43,7 @@ scripts/
 
 ## Editing text
 
-All of the site's text lives in `src/content/`. `home.js` has the project slides, the Now Playing wording, the Instagram link, and the signup form text; `about.js` has the About slide. To add a project, add an entry to the `projects` list. You don't need to touch any components. The comment at the top of `home.js` lists every field. Set a project's `layout` to `art-left` (the default), `art-right`, or `art-top` to choose where its art sits. To give a new project its own look, add a `.slide--<id>` block to `src/Components/Slide/slides.css`; that block can also fine-tune the layout with `--slide-art-size`, `--slide-text-size`, and `--slide-align`.
+All of the site's text lives in `src/content/`. `home.js` has the project sections, the Now Playing wording, the Instagram link, and the signup form text; `about.js` has the About section. To add a project, add an entry to the `projects` list. You don't need to touch any components. The comment at the top of `home.js` lists every field. Set a project's `layout` to `art-left` (the default), `art-right`, or `art-top` to choose where its art sits. To give a new project its own look, add a `.section--<id>` block to `src/Components/Section/sections.css`; that block can also fine-tune the layout with `--section-art-size`, `--section-text-size`, and `--section-align`.
 
 Paragraphs are written in Markdown, so `*italics*`, `**bold**`, and `[links](https://example.com)` work. Link addresses and button `href`s follow the same rules:
 
@@ -55,9 +55,9 @@ Paragraphs are written in Markdown, so `*italics*`, `**bold**`, and `[links](htt
 
 The top of the page lists the shows in `src/content/nowPlaying.json`. Each show has a `start` and `end` date (`YYYY-MM-DD`):
 
-- Before `start` it's marked "Coming soon". From `start` through `end` it's "Now Playing".
-- After `end` it disappears on its own, with no edit or redeploy needed.
-- With no current or upcoming shows, the section invites people to join the newsletter instead.
+- It's listed from the moment it's added, including before `start` (a multi-day run shows "Opens …" until then).
+- After `end` it's marked "Just wrapped" for two weeks (with a newsletter button instead of tickets), then disappears on its own. No edit or redeploy needed. The wording and number of days are under `nowPlaying.wrapped` in `home.js`.
+- With nothing current, upcoming, or just wrapped, the section invites people to join the newsletter instead.
 
 To add a show from its ticket page (Eventbrite, Luma, or anything else that publishes standard event data):
 
