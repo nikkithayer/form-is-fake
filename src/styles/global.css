@@ -5,6 +5,7 @@
   padding: 0;
   text-align: center;
   width: 100%;
+  min-height: 100vh;
   line-height: 1.4;
   font-size: 18px;
   font-family: "Libre Franklin", sans-serif;
@@ -16,7 +17,6 @@
 
 body {
   margin: 0;
-  display: flex;
   min-width: 320px;
   min-height: 100vh;
 }
