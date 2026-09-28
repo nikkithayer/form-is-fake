@@ -82,6 +82,24 @@
   --section-bg: var(--yellow);
 }
 .section--greatest-party .title{ color: var(--blue); }
+/* The blue blob behind the sunglasses, slowly shifting shape at the same
+   pace as the Dance Party spiral (the morph is built into the SVG). */
+.section--greatest-party .section-art::before{
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 105%;
+  aspect-ratio: 863 / 693;
+  translate: -50% -42%;
+  z-index: -1;
+  background: url(/greatestparty-blob-animated.svg) center / contain no-repeat;
+}
+@media (prefers-reduced-motion: reduce){
+  .section--greatest-party .section-art::before{
+    background-image: url(/greatestparty-blob.svg);
+  }
+}
 .section--greatest-party .subtitle{ color: var(--black); }
 
 .section--reverse-murder-mystery{

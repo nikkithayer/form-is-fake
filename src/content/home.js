@@ -106,10 +106,10 @@ export const projects = [
     subtitle: "(2012)",
     body: [
       "Invitees were given one objective: make people who weren’t there believe that this was the wildest, most fun party with the coolest people ever, and in the process... maybe throw the wildest, most fun party with the coolest people ever?",
-      "We made a party out of staging the moments that you always hoped would be captured organically. Folks brought props, staged scandals and debauchery, and had a great time doing it. Did they have the greatest time doing it? We’ll never tell.",
+      "We made a party out of staging the moments we always hoped would be captured organically. Folks brought props, staged scandals and debauchery, and created some unforgettable and thoroughly falsified memories.",
     ],
-    image: "/greatestpartyever.png",
-    imageAlt: "The Greatest Party Ever seal, an eagle holding a cocktail and a phone, above the caption “[Images redacted to protect the vibe]”",
+    image: "/greatestparty-shades.png",
+    imageAlt: "Black sunglasses with The Greatest Party Ever seal reflected in the lenses",
     layout: "art-right",
   },
   {
