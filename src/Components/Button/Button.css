@@ -1,5 +1,6 @@
 /* Base look for every button; Section and SignUpForm set the colors. */
 .btn {
+  display: inline-block;
   border-radius: var(--radius-pill);
   border: 1px solid transparent;
   padding: 0.6em 1.2em;

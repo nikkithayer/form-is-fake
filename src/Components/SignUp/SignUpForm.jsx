@@ -23,7 +23,7 @@ function SignUpForm() {
     }
 
     return (
-        <div className='signup-form-holder'><div className='signup-form container'>
+        <div className='signup-form-holder' id='signup'><div className='signup-form container'>
             {status === 'submitted' ? (
                 <h1>Thanks for signing up! You’ll be hearing from us soon! (non-threatening)</h1>
             ) : (

@@ -1,15 +1,10 @@
 import Button from '../Button/Button'
 import './Section.css'
+import PropTypes from 'prop-types'
 
 function Section({ProjectInfo}) {
   const {title, description, image, link, linkText, buttonFunction} = ProjectInfo
-  var buttonInfo = {link, linkText}
-  link && (buttonInfo.link = link)
-  linkText && (buttonInfo.linkText = linkText)
-  buttonFunction && (buttonInfo.buttonFunction = buttonFunction)
-  
 
-  
   function Content (currentContent) {
     return currentContent.map((paragraph) => <p>{paragraph}</p>);
   }
@@ -22,12 +17,23 @@ function Section({ProjectInfo}) {
         <div className="content">
             <h1>{title}</h1>
             {Content(description)}
-            {linkText && <Button buttonInfo={buttonInfo} />}
+            {linkText && <Button link={link} linkText={linkText} buttonFunction={buttonFunction} />}
           </div>
         </div>
       </div>
     </>
   )
+}
+
+Section.propTypes = {
+  ProjectInfo: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    description: PropTypes.arrayOf(PropTypes.string).isRequired,
+    image: PropTypes.string,
+    link: PropTypes.string,
+    linkText: PropTypes.string,
+    buttonFunction: PropTypes.oneOf(['route', 'scroll']),
+  }).isRequired,
 }
 
 export default Section

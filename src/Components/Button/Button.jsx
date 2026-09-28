@@ -1,40 +1,28 @@
 import './Button.css'
-import { useNavigate } from 'react-router-dom';
-function Button ({buttonInfo}) {
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types'
 
-  const navigate = useNavigate()
+function Button ({link, linkText, buttonFunction}) {
 
-  const openInNewTab = (url) => {
-    console.log(link)
-    window.open(link);
-  };
-
-  const scrollTo = (e) => {
-    e.preventDefault
-    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
+  const scrollToSignup = () => {
+    document.getElementById('signup')?.scrollIntoView({ behavior: 'smooth' })
   }
 
-const aboutRedirect = (e) => {
-  e.preventDefault
-  console.log('triggering')
-  return navigate('/about');
+  if (buttonFunction === 'route') {
+    return <Link className="btn" to="/about">{linkText}</Link>
+  }
+  else if (buttonFunction === 'scroll') {
+    return <button className="btn" type="button" onClick={scrollToSignup}>{linkText}</button>
+  }
+  else return (
+    <a className="btn" href={link} target="_blank" rel="noopener noreferrer">{linkText}</a>
+  );
 }
 
-    const { link, linkText, buttonFunction } = buttonInfo;
-
-    if (buttonFunction === 'route') {
-      return (
-      <button className="btn" onClick={aboutRedirect}>{linkText}</button>
-    )
-    }
-    else if (buttonFunction === 'scroll') {
-      return (
-      <button className="btn" onClick={scrollTo}>{linkText}</button>
-    )
-    }
-    else return (
-      <button className="btn" onClick={() => openInNewTab({link})}>{linkText}</button>
-    );
+Button.propTypes = {
+  link: PropTypes.string,
+  linkText: PropTypes.string.isRequired,
+  buttonFunction: PropTypes.oneOf(['route', 'scroll']),
 }
 
 export default Button;
