@@ -1,5 +1,5 @@
 /*
-  Text for the About page.
+  Text for the About slide.
 
   body and each section's body are lists of paragraphs written in Markdown,
   so you can use *italics*, **bold**, and [links](https://example.com).
@@ -8,6 +8,7 @@
 
 export const about = {
   title: "About Us",
+  intro: "We’re a (two person) team of interdisciplinary writers, coders, and artists who make events, games, and spectacles by smushing mediums and genres together.",
   image: "/nikkianddavid.jpg",
   imageAlt: "Nikki Thayer and David Daw standing together on a tree-lined city street",
   body: [

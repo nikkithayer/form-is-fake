@@ -1,31 +1,48 @@
 /*
-  Text for the home page.
+  Text for the site. (Now Playing shows live in nowPlaying.json.)
 
-  Each project (in `sections` and `projects.items`) can have:
+  Each project in `projects` becomes a full-height slide. Fields:
+    id        Short name used in the page address (#iron-city) and to give
+              the slide its own styles in Components/Slide/slides.css.
     title     Heading text.
-    subtitle  Small line under the title, like a year. Shown in project columns.
+    subtitle  Small line under the title, like a year.
     body      A list of paragraphs. Each one is Markdown, so you can write
               *italics*, **bold**, and [links](https://example.com).
-    image     Path to a file in /public, e.g. "/ironcity.png".
+    image     The slide's main artwork: a path to a file in /public.
     imageAlt  A short description of the image for screen readers.
+    photos    Optional list of extra pictures: { src: "/file.jpg", alt: "..." }
     cta       Optional button: { label: "Button text", href: "..." }
-              href can be a page on this site ("/about"), a spot on this
-              page ("#signup"), or any other URL (opens in a new tab).
-    theme     Colors for a section: "light", "blue", or "dark".
+              href can be a spot on this page ("#signup"), a page on this
+              site ("/about"), or any other URL (opens in a new tab).
+    layout    Where the art sits: "art-left" (the default), "art-right", or
+              "art-top" (full width above the text, for wide art). Slides
+              without an image are text-only. On phones, art is always on top.
+              To fine-tune sizes and alignment, see Components/Slide/Slide.css.
 
   Links inside body text follow the same rules as cta hrefs.
+  Slides appear in the order listed here.
 */
 
-export const sections = [
-  {
-    title: "What on earth?",
-    body: [
-      "We’re a (two person) team of interdisciplinary writers, coders, and artists who make events, games, and spectacles by smushing mediums and genres together.",
-    ],
-    cta: { label: "What does that even mean?", href: "/about" },
-    theme: "light",
+export const instagram = {
+  handle: "@formisfake",
+  href: "https://www.instagram.com/formisfake/",
+}
+
+export const nowPlaying = {
+  title: "Now Playing",
+  upcomingLabel: "Coming soon",
+  ticketLabel: "Get tickets",
+  // Shown when no show in nowPlaying.json is current or upcoming.
+  empty: {
+    title: "Nothing on right now",
+    body: "But something’s always brewing. Get on the list and we’ll tell you the moment the next one opens.",
+    cta: { label: "Sign me up", href: "#signup" },
   },
+}
+
+export const projects = [
   {
+    id: "iron-city",
     title: "Iron City",
     body: [
       "Iron City is an immersive experience that takes place in a world where the Fae have returned and you need to help a lawfirm dealing with magical contract law.",
@@ -34,59 +51,68 @@ export const sections = [
     ],
     image: "/ironcity.png",
     imageAlt: "A glowing fairy hand reaches toward a wireframe sculpture over a desk of legal paperwork and a Greystone/Canning “Fae Arbitration Experts” mug",
+    layout: "art-left",
     cta: { label: "I'm intrigued and wish to subscribe to your newsletter.", href: "#signup" },
-    theme: "blue",
   },
   {
+    id: "dance-party",
+    title: "Dance Party at the End of the World",
+    subtitle: "(2006-?)",
+    body: [
+      "Every October, from 2006 to 2013 David Daw held a dance party with a twist - the radio broadcast from Orson Welles’ War of the Worlds is real, and the world is about to end.",
+      "Over 8 years, the production expanded to include sketches, interactive tech, and a punch bowl set on fire (which ruled).",
+      "Attendees were given backstories and relationships to other partygoers, encouraging strangers to meet. “Enemies” became friends, friends tore it up on the dance floor, and the world just barely made it through another alien invasion again.",
+    ],
+    image: "/dancepartyattheendoftheworld.png",
+    imageAlt: "Collage of Dance Party at the End of the World: the party’s title card, sepia photos of costumed guests, and a world-map news ticker",
+    layout: "art-right",
+  },
+  {
+    id: "palamo-drafthouse",
+    title: "Palamo Drafthouse",
+    subtitle: "(2020-?)",
+    body: [
+      "Why invite friends over to chill and watch a movie when you could invite friends over to watch a NEW FILM FESTIVAL EVERY TIME?",
+      "In the spirit of high concept hangouts, we spent the pandemic programming monthly 12 hour marathons for friends to drop into and out of.",
+      "Did we make custom film posters for every meetup? You already know we made custom posters for every meetup.",
+      "This debacle culminated (FOR NOW) in a double feature at Videotheque in Highland Park with silly little trailers, secret gifts, and tons of snacks.",
+    ],
+    image: "/palamodrafthouse.png",
+    imageAlt: "Collage of Palamo Drafthouse: a neon “Palamo Drafthouse Presents” title card, custom movie-list posters, friends setting up a video-store room, and a snack table",
+    layout: "art-left",
+  },
+  {
+    id: "greatest-party",
+    title: "The Greatest Party Ever",
+    subtitle: "(2012)",
+    body: [
+      "Invitees were given one objective: make people who weren’t there believe that this was the wildest, most fun party with the coolest people ever, and in the process... maybe throw the wildest, most fun party with the coolest people ever?",
+      "We made a party out of staging the moments that you always hoped would be captured organically. Folks brought props, staged scandals and debauchery, and had a great time doing it. Did they have the greatest time doing it? We’ll never tell.",
+    ],
+    image: "/greatestpartyever.png",
+    imageAlt: "The Greatest Party Ever seal, an eagle holding a cocktail and a phone, above the caption “[Images redacted to protect the vibe]”",
+    layout: "art-right",
+  },
+  {
+    id: "reverse-murder-mystery",
+    title: "Reverse Murder Mystery Party",
+    // TODO: real description, year, and artwork.
+    body: [
+      "Details coming soon.",
+    ],
+  },
+  {
+    id: "beach-episode",
     title: "Beach Episode",
     body: [
       "A one sheet TTRPG about the balance between self care and being down for the cause.",
     ],
     image: "/beachepisode.png",
     imageAlt: "Beach Episode, a solo journaling game by David Daw, shown as a notepad page among a palm-tree postcard and an airmail envelope",
+    layout: "art-left",
     cta: { label: "Download on itch.io", href: "https://formisfake.itch.io/beach-episode" },
-    theme: "dark",
   },
 ]
-
-export const projects = {
-  title: "What else have ya got?",
-  items: [
-    {
-      title: "Palamo Drafthouse",
-      subtitle: "(2020-?)",
-      body: [
-        "Why invite friends over to chill and watch a movie when you could invite friends over to watch a NEW FILM FESTIVAL EVERY TIME?",
-        "In the spirit of high concept hangouts, we spent the pandemic programming monthly 12 hour marathons for friends to drop into and out of.",
-        "Did we make custom film posters for every meetup? You already know we made custom posters for every meetup.",
-        "This debacle culminated (FOR NOW) in a double feature at Videotheque in Highland Park with silly little trailers, secret gifts, and tons of snacks.",
-      ],
-      image: "/palamodrafthouse.png",
-      imageAlt: "Collage of Palamo Drafthouse: a neon “Palamo Drafthouse Presents” title card, custom movie-list posters, friends setting up a video-store room, and a snack table",
-    },
-    {
-      title: "Dance Party at the End of the World",
-      subtitle: "(2006-?)",
-      body: [
-        "Every October, from 2006 to 2013 David Daw held a dance party with a twist - the radio broadcast from Orson Welles’ War of the Worlds is real, and the world is about to end.",
-        "Over 8 years, the production expanded to include sketches, interactive tech, and a punch bowl set on fire (which ruled).",
-        "Attendees were given backstories and relationships to other partygoers, encouraging strangers to meet. “Enemies” became friends, friends tore it up on the dance floor, and the world just barely made it through another alien invasion again.",
-      ],
-      image: "/dancepartyattheendoftheworld.png",
-      imageAlt: "Collage of Dance Party at the End of the World: the party’s title card, sepia photos of costumed guests, and a world-map news ticker",
-    },
-    {
-      title: "The Greatest Party Ever",
-      subtitle: "(2012)",
-      body: [
-        "Invitees were given one objective: make people who weren’t there believe that this was the wildest, most fun party with the coolest people ever, and in the process... maybe throw the wildest, most fun party with the coolest people ever?",
-        "We made a party out of staging the moments that you always hoped would be captured organically. Folks brought props, staged scandals and debauchery, and had a great time doing it. Did they have the greatest time doing it? We’ll never tell.",
-      ],
-      image: "/greatestpartyever.png",
-      imageAlt: "The Greatest Party Ever seal, an eagle holding a cocktail and a phone, above the caption “[Images redacted to protect the vibe]”",
-    },
-  ],
-}
 
 export const signup = {
   title: "This form is real.",

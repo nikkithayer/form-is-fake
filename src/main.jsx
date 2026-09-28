@@ -1,11 +1,11 @@
 import React from 'react'
 import {
   createBrowserRouter,
+  Navigate,
   RouterProvider,
 } from "react-router-dom";
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
-import About from './Components/About/About.jsx'
 import './styles/tokens.css'
 import './styles/global.css'
 
@@ -15,8 +15,9 @@ const router = createBrowserRouter([
     element:  <App />
   },
   {
+    // About is now a slide on the home page; keep old links working.
     path: "/about",
-    element: <About />
+    element: <Navigate to="/#about" replace />
   }
 ]);
 

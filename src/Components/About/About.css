@@ -1,25 +1,19 @@
 .about{
-  margin-top: var(--space-xl);
-  margin-bottom: var(--space-xl);
-  display:flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  padding: 0 var(--space-m);
-}
-.about h1{
-  color: var(--red);
-  width: 100%;
-  text-align: left;
-  margin-bottom: var(--space-m);
-}
-.about p{
+  min-height: 100vh;
+  padding: var(--space-xl) var(--space-m);
+  box-sizing: border-box;
+  scroll-snap-align: start;
   text-align: left;
 }
 
-.about section{
-  width: 100%;
-  text-align: left;
+.about .title{
+  color: var(--red);
+  margin-bottom: var(--space-s);
+}
+
+.about-intro{
+  font-size: 1.4em;
+  max-width: 800px;
 }
 
 .about img{

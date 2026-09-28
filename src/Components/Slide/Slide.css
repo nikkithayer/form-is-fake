@@ -1,0 +1,109 @@
+/*
+  Layout shared by every slide. Per-project looks live in slides.css.
+
+  A slide's `layout` (set in content/home.js) picks one of the arrangements
+  below. Each slide can fine-tune it in slides.css with these variables:
+    --slide-art-size   width of the art column  (default 1fr)
+    --slide-text-size  width of the text column (default 1fr)
+    --slide-align      vertical alignment of art and text: start, center, end
+*/
+.slide{
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-l);
+  padding: var(--space-xl) var(--space-m);
+  box-sizing: border-box;
+  overflow: hidden;
+  scroll-snap-align: start;
+  text-align: left;
+}
+
+.slide-inner{
+  position: relative;
+  width: 100%;
+  display: grid;
+  gap: var(--space-l);
+  align-items: var(--slide-align, center);
+}
+
+.slide-art{ grid-area: art; }
+.slide-text{ grid-area: text; }
+
+/* Art on the left, text on the right. The default. */
+.slide-inner--art-left{
+  grid-template-areas: "art text";
+  grid-template-columns: var(--slide-art-size, 1fr) var(--slide-text-size, 1fr);
+}
+
+/* Text on the left, art on the right. */
+.slide-inner--art-right{
+  grid-template-areas: "text art";
+  grid-template-columns: var(--slide-text-size, 1fr) var(--slide-art-size, 1fr);
+}
+
+/* Art across the top, centered text below. For wide artwork. */
+.slide-inner--art-top{
+  grid-template-areas: "art" "text";
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+.slide-inner--art-top .slide-text{
+  max-width: 800px;
+  text-align: center;
+}
+
+/* No artwork: the text gets a readable measure. */
+.slide-inner--text-only{
+  grid-template-areas: "text";
+  grid-template-columns: minmax(0, 800px);
+}
+
+.slide-art img{
+  width: 100%;
+  max-width: 560px;
+}
+
+.slide-inner--art-top .slide-art img{
+  max-width: 900px;
+}
+
+.slide .btn{
+  background-color: var(--black);
+  color: var(--white);
+}
+
+.slide-photos{
+  width: 100%;
+  display: flex;
+  gap: var(--space-s);
+  overflow-x: auto;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.slide-photos img{
+  height: 220px;
+  border-radius: var(--radius-s);
+}
+
+/* On narrow screens every layout stacks: art above text. */
+@media screen and (max-width:1200px){
+  .slide{
+    min-height: auto;
+    padding: var(--space-l) var(--space-m);
+  }
+
+  .slide .slide-inner{
+    grid-template-areas: none;
+    grid-template-columns: 1fr;
+  }
+
+  .slide .slide-art,
+  .slide .slide-text{
+    grid-area: auto;
+  }
+}

@@ -1,0 +1,15 @@
+.footer{
+  background-color: var(--black);
+  color: var(--white);
+  padding: var(--space-m);
+  border-top: 2px solid var(--white);
+}
+
+.footer a{
+  color: var(--yellow);
+}
+
+.footer-small{
+  font-size: 0.8em;
+  opacity: 0.7;
+}

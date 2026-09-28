@@ -1,26 +1,25 @@
-import Header from '../Header/Header'
 import Paragraphs from '../Paragraphs/Paragraphs'
 import { about } from '../../content/about'
 import './About.css'
 
+// The About slide at the bottom of the page (old /about links redirect here).
 function About() {
-
   return (
-    <>
-    <Header />
-    <main className='about container'>
-      <h1>{about.title}</h1>
-      <img src={about.image} alt={about.imageAlt} />
-      <Paragraphs body={about.body} />
+    <section id="about" className="about">
+      <div className="about-inner container">
+        <h2 className="title">{about.title}</h2>
+        <p className="about-intro">{about.intro}</p>
+        <img src={about.image} alt={about.imageAlt} />
+        <Paragraphs body={about.body} />
 
-      {about.sections.map((section) => (
-        <section key={section.title}>
-          <h2 className="subtitle">{section.title}</h2>
-          <Paragraphs body={section.body} />
-        </section>
-      ))}
-    </main>
-    </>
+        {about.sections.map((section) => (
+          <section key={section.title}>
+            <h3 className="subtitle">{section.title}</h3>
+            <Paragraphs body={section.body} />
+          </section>
+        ))}
+      </div>
+    </section>
   )
 }
 
