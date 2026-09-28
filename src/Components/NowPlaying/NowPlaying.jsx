@@ -1,10 +1,15 @@
 import PropTypes from 'prop-types'
 import Button from '../Button/Button'
+import Marquee from '../Marquee/Marquee'
 import { currentShows, formatDay, formatRun } from './showDates'
 import { ctaShape, showShape } from '../../content/propTypes'
+import { angleStyle } from '../../utils/angle'
 import './NowPlaying.css'
 
-function Show ({show, label, cta}) {
+// The ticker along the bottom says what's on; a show only gets its own tag
+// when it adds something: an upcoming run's opening date, or "Just wrapped"
+// on a closed show listed alongside current ones.
+function Show ({show, tag, cta}) {
   const wrapped = show.status === 'wrapped'
   // Once a show has wrapped, its time and price no longer matter.
   const details = wrapped ? [formatRun(show.start, show.end)] : [formatRun(show.start, show.end), show.time, show.price]
@@ -13,10 +18,7 @@ function Show ({show, label, cta}) {
     <article className="show">
       {show.image && <img className="show-image" src={show.image} alt={show.imageAlt ?? ''} />}
       <div className="show-info">
-        <p className="show-status">
-          {label}
-          {show.status === 'upcoming' && show.start !== show.end && ` · Opens ${formatDay(show.start)}`}
-        </p>
+        {tag && <p className="show-status">{tag}</p>}
         <h3 className="title">{show.title}</h3>
         <p className="subtitle show-details">
           {details.filter(Boolean).join(' · ')}
@@ -30,18 +32,30 @@ function Show ({show, label, cta}) {
 
 Show.propTypes = {
   show: showShape.isRequired,
-  label: PropTypes.string.isRequired,
+  tag: PropTypes.string,
   cta: ctaShape.isRequired,
 }
+
+// Repeated enough times to fill even very wide screens.
+const repeated = (text) => Array(10).fill(text)
 
 // The top of the page: current and upcoming shows, then any that just
 // wrapped, or a nudge to the newsletter when there are none. Shows move to
 // "Just wrapped" when they close and drop off on their own after that.
 function NowPlaying ({shows, title, ticketLabel, wrapped, empty}) {
   const showing = currentShows(shows, new Date(), wrapped.days)
+  // The ticker says "Just wrapped" once everything listed has closed.
+  const allWrapped = showing.length > 0 && showing.every((show) => show.status === 'wrapped')
+  const headline = allWrapped ? wrapped.label : title
+
+  const tagFor = (show) => {
+    if (show.status === 'wrapped' && !allWrapped) return wrapped.label
+    if (show.status === 'upcoming' && show.start !== show.end) return `Opens ${formatDay(show.start)}`
+    return null
+  }
 
   return (
-    <section id="now-playing" className="now-playing">
+    <section id="now-playing" className="now-playing angled" style={angleStyle('now-playing')}>
       <div className="container">
         <h2 className="visually-hidden">{title}</h2>
         {showing.length > 0 ? (
@@ -49,7 +63,7 @@ function NowPlaying ({shows, title, ticketLabel, wrapped, empty}) {
             <Show
               key={show.ticketUrl}
               show={show}
-              label={show.status === 'wrapped' ? wrapped.label : title}
+              tag={tagFor(show)}
               cta={show.status === 'wrapped' ? wrapped.cta : { label: ticketLabel, href: show.ticketUrl }}
             />
           ))
@@ -63,6 +77,7 @@ function NowPlaying ({shows, title, ticketLabel, wrapped, empty}) {
           </div>
         )}
       </div>
+      {showing.length > 0 && <Marquee edge="bottom" items={repeated(headline)} decorative className="now-playing-marquee" />}
     </section>
   )
 }

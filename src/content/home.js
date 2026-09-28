@@ -34,11 +34,11 @@ export const instagram = {
 }
 
 export const nowPlaying = {
-  // The badge on each show (and the section's heading for screen readers).
+  // The ticker along the bottom of Now Playing (and the section's heading for screen readers).
   title: "Now Playing",
   ticketLabel: "Get tickets",
-  // After a show's end date it stays up this many days with this badge and
-  // button instead of the ticket link, then drops off.
+  // After a show's end date it stays up this many days, with this label on
+  // the ticker and this button instead of the ticket link, then drops off.
   wrapped: {
     label: "Just wrapped",
     days: 14,

@@ -1,26 +1,38 @@
-/*
-  The strip lies along the section's angled cut (see styles/angled.css).
-  Its centerline starts at the cut's left depth; Marquee.jsx measures the
-  cut and sets --marquee-angle and --marquee-length to match it at any width.
-  It overhangs both page edges a little so the rotated ends never show a gap.
-*/
+/* The band itself. Colors can be overridden per use with a className. */
 .marquee{
   --marquee-height: 48px;
-  --marquee-overhang: 24px;
   position: absolute;
-  left: calc(-1 * var(--marquee-overhang));
-  top: calc(100% + var(--cut-l, 0px) - var(--marquee-height) / 2);
-  width: calc(var(--marquee-length, 100%) + 2 * var(--marquee-overhang));
   height: var(--marquee-height);
   z-index: 3; /* above the cuts and above the next section's spilling art */
-  transform-origin: var(--marquee-overhang) center;
-  rotate: var(--marquee-angle, 0deg);
   overflow: hidden;
   display: flex;
   align-items: center;
   background-color: var(--yellow);
   color: var(--black);
   text-align: left;
+}
+
+/*
+  Bottom edge: the strip lies along the section's angled cut (see
+  styles/angled.css). Its centerline starts at the cut's left depth;
+  Marquee.jsx measures the cut and sets --marquee-angle and --marquee-length
+  to match at any width. It overhangs both page edges a little so the rotated
+  ends never show a gap.
+*/
+.marquee--bottom{
+  --marquee-overhang: 24px;
+  left: calc(-1 * var(--marquee-overhang));
+  top: calc(100% + var(--cut-l, 0px) - var(--marquee-height) / 2);
+  width: calc(var(--marquee-length, 100%) + 2 * var(--marquee-overhang));
+  transform-origin: var(--marquee-overhang) center;
+  rotate: var(--marquee-angle, 0deg);
+}
+
+/* Top edge: flat along the top of the section. */
+.marquee--top{
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 
 /* Invisible rulers sized to the cut depths, read by Marquee.jsx. */
@@ -36,6 +48,10 @@
   display: flex;
   width: max-content;
   animation: marquee 90s linear infinite;
+}
+
+.marquee--reverse .marquee-track{
+  animation-direction: reverse;
 }
 
 .marquee:hover .marquee-track{
@@ -92,5 +108,14 @@
   }
   .marquee-group[aria-hidden]{
     display: none;
+  }
+  /* Decorative strips just repeat a word: keep them one still line. */
+  .marquee[aria-hidden]{
+    height: var(--marquee-height);
+    padding: 0;
+  }
+  .marquee[aria-hidden] .marquee-group{
+    flex-wrap: nowrap;
+    white-space: nowrap;
   }
 }

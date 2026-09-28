@@ -1,8 +1,31 @@
 .now-playing{
-  background-color: var(--black);
-  color: var(--white);
+  --section-bg: var(--white);
+  color: var(--black);
   padding: var(--space-l) var(--space-m);
   text-align: left;
+}
+
+/* Nothing cuts in from above (it's the first section), so skip the usual
+   clearance the other angled sections leave at the top. */
+.now-playing.angled{
+  padding-top: var(--space-l);
+}
+
+/* The "Now playing" ticker: red on black, one color throughout. */
+.now-playing-marquee{
+  background-color: var(--black);
+  color: var(--red);
+}
+.now-playing-marquee .marquee-item{
+  font-style: normal;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-right: var(--space-l);
+}
+/* Just the words, no separators. */
+.now-playing-marquee .marquee-item + .marquee-item::before{
+  content: none;
 }
 
 .show{
@@ -15,7 +38,7 @@
 .show + .show{
   margin-top: var(--space-l);
   padding-top: var(--space-l);
-  border-top: 2px solid var(--white);
+  border-top: 2px solid var(--black);
 }
 
 .show-image{
