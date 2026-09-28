@@ -28,7 +28,8 @@ The dev server runs at http://localhost:5173.
 public/               Images and other static files, served from /
 src/
   main.jsx            Entry point and routes (/ and /about)
-  App.jsx             Home page and its project content
+  App.jsx             Home page layout
+  content/            All site text: home.js, about.js
   firebase-config.js  Firebase setup and addSignup()
   Components/         One folder per component, each with its own CSS
   styles/
@@ -36,7 +37,15 @@ src/
     global.css        Base element styles and shared classes
 ```
 
-Project content (titles, descriptions, images, alt text, button labels) lives as data objects in `App.jsx` and `Components/Columns/Columns.jsx`.
+## Editing text
+
+All of the site's text lives in `src/content/`. `home.js` has the home page sections, the project columns, and the signup form text; `about.js` has the About page. To add a project, add an entry to the `sections` or `projects.items` list. You don't need to touch any components. The comment at the top of `home.js` lists every field.
+
+Paragraphs are written in Markdown, so `*italics*`, `**bold**`, and `[links](https://example.com)` work. Link addresses and button `href`s follow the same rules:
+
+- `/about`: a page on this site
+- `#signup`: scrolls to that part of the page
+- anything else: opens in a new tab
 
 ## Styling
 

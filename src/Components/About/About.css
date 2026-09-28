@@ -17,6 +17,11 @@
   text-align: left;
 }
 
+.about section{
+  width: 100%;
+  text-align: left;
+}
+
 .about img{
   max-width:600px;
   width: 100%;

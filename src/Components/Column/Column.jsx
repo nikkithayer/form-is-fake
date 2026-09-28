@@ -1,30 +1,19 @@
-import PropTypes from 'prop-types'
+import Button from '../Button/Button'
+import Paragraphs from '../Paragraphs/Paragraphs'
+import { projectPropTypes } from '../../content/propTypes'
 
-function Column ({columnInfo}) {
-    const { title, image, imageAlt, year, content } = columnInfo;
-
-function Content (currentContent) {
-    return currentContent.map((paragraph, i) => <p key={i}>{paragraph}</p>);
-}
-
-    return (
+function Column ({title, subtitle, body, image, imageAlt, cta}) {
+  return (
     <div className="column">
-    <img src={image} alt={imageAlt} />
-    <h3 className="title">{title}</h3>
-    <p className="subtitle year">{year}</p>
-    {Content(content)}
+      {image && <img src={image} alt={imageAlt} />}
+      <h3 className="title">{title}</h3>
+      {subtitle && <p className="subtitle year">{subtitle}</p>}
+      <Paragraphs body={body} />
+      {cta && <Button {...cta} />}
     </div>
   );
 }
 
-Column.propTypes = {
-    columnInfo: PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        image: PropTypes.string.isRequired,
-        imageAlt: PropTypes.string.isRequired,
-        year: PropTypes.string.isRequired,
-        content: PropTypes.arrayOf(PropTypes.string).isRequired,
-    }).isRequired,
-}
+Column.propTypes = projectPropTypes
 
 export default Column;

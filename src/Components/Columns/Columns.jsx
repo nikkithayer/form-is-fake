@@ -1,52 +1,22 @@
+import PropTypes from 'prop-types'
 import Column from '../Column/Column'
+import { projectPropTypes } from '../../content/propTypes'
 import './Columns.css'
 
-function Columns() {
-
-  const palamoDrafthouse = {
-    title: "Palamo Drafthouse",
-    image: "/palamodrafthouse.png",
-    imageAlt: "Collage of Palamo Drafthouse: a neon “Palamo Drafthouse Presents” title card, custom movie-list posters, friends setting up a video-store room, and a snack table",
-    year: "(2020-?)",
-    content: ["Why invite friends over to chill and watch a movie when you could invite friends over to watch a NEW FILM FESTIVAL EVERY TIME?",
-    "In the spirit of high concept hangouts, we spent the pandemic programming monthly 12 hour marathons for friends to drop into and out of.",
-    "Did we make custom film posters for every meetup? You already know we made custom posters for every meetup.",
-    "This debacle culminated (FOR NOW) in a double feature at Videotheque in Highland Park with silly little trailers, secret gifts, and tons of snacks."]
-  }
-
-  const danceParty = {
-    title: "Dance Party at the End of the World",
-    image: "/dancepartyattheendoftheworld.png",
-    imageAlt: "Collage of Dance Party at the End of the World: the party’s title card, sepia photos of costumed guests, and a world-map news ticker",
-    year: "(2006-?)",
-    content: ["Every October, from 2006 to 2013 David Daw held a dance party with a twist - the radio broadcast from Orson Welles’ War of the Worlds is real, and the world is about to end.",
-    "Over 8 years, the production expanded to include sketches, interactive tech, and a punch bowl set on fire (which ruled).",
-    "Attendees were given backstories and relationships to other partygoers, encouraging strangers to meet. “Enemies” became friends, friends tore it up on the dance floor, and the world just barely made it through another alien invasion again."]
-  }
-
-  const greatestParty = {
-    title: "The Greatest Party Ever",
-    image: "/greatestpartyever.png",
-    imageAlt: "The Greatest Party Ever seal, an eagle holding a cocktail and a phone, above the caption “[Images redacted to protect the vibe]”",
-    year: "(2012)",
-    content: ["Invitees were given one objective: make people who weren’t there believe that this was the wildest, most fun party with the coolest people ever, and in the process... maybe throw the wildest, most fun party with the coolest people ever?",
-    "We made a party out of staging the moments that you always hoped would be captured organically. Folks brought props, staged scandals and debauchery, and had a great time doing it. Did they have the greatest time doing it? We’ll never tell."]
-  }
-
-
-
+function Columns({title, items}) {
   return (
-    <>
     <div className="columns-container">
-      <h2 className="title">What else have ya got?</h2>
-    <div className="section-column container">
-      <Column columnInfo={palamoDrafthouse} />
-      <Column columnInfo={danceParty} />
-      <Column columnInfo={greatestParty} />
+      <h2 className="title">{title}</h2>
+      <div className="section-column container">
+        {items.map((item) => <Column key={item.title} {...item} />)}
       </div>
     </div>
-    </>
   )
+}
+
+Columns.propTypes = {
+  title: PropTypes.string.isRequired,
+  items: PropTypes.arrayOf(PropTypes.shape(projectPropTypes)).isRequired,
 }
 
 export default Columns

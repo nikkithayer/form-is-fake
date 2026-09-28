@@ -1,8 +1,9 @@
 import './SignUpForm.css'
 import { useState } from 'react'
+import PropTypes from 'prop-types'
 import { addSignup } from '../../firebase-config'
 
-function SignUpForm() {
+function SignUpForm({title, intro, thanks}) {
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
@@ -25,11 +26,11 @@ function SignUpForm() {
     return (
         <div className='signup-form-holder' id='signup'><div className='signup-form container'>
             {status === 'submitted' ? (
-                <h2 className="title">Thanks for signing up! You’ll be hearing from us soon! (non-threatening)</h2>
+                <h2 className="title">{thanks}</h2>
             ) : (
                 <>
-                <h2 className="title">This form is real.</h2>
-                <p>Sign up to our newsletter to hear about updates, playtests, key dates, things of that nature. Not too much.</p>
+                <h2 className="title">{title}</h2>
+                <p>{intro}</p>
 
                 <form onSubmit={handleSubmit}>
                 <label htmlFor="signup-name">Name: </label>
@@ -49,6 +50,12 @@ function SignUpForm() {
         </div>
         </div>
     )
+}
+
+SignUpForm.propTypes = {
+    title: PropTypes.string.isRequired,
+    intro: PropTypes.string.isRequired,
+    thanks: PropTypes.string.isRequired,
 }
 
 export default SignUpForm
