@@ -28,7 +28,7 @@ function SignUpForm({Signup}) {
     }
 
 if (!submitted) return (
-        <div className='signup-form-holder'><div className='signup-form'>
+        <div className='signup-form-holder'><div className='signup-form container'>
             <h1>This form is real.</h1>
             <p>Sign up to our newsletter to hear about updates, playtests, key dates, things of that nature. Not too much.</p>
 
@@ -41,7 +41,7 @@ if (!submitted) return (
             <input type="checkbox" id="playtest" name="playtest" checked={playtest} onChange={handleCheckChange} />
             <label htmlFor="playtest">I would be interested in playtesting work in progress.</label>
             <br></br>
-            <button type="submit">Submit</button>
+            <button className="btn" type="submit">Submit</button>
             </form>}
         </div>
         </div>

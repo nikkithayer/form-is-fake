@@ -1,21 +1,17 @@
 .columns-container{
   width: 100%;
-  padding: 32px 0;
+  padding: var(--space-m) 0;
 }
 
 .section-column{
   display: grid;
-  gap: 60px;
+  gap: var(--space-xl);
   grid-template-columns: 1fr 1fr;
-  margin-top: 60px;
-  max-width: 1200px;
-  margin: 0 auto;
-
 }
 
 .section-column h1{
   font-size: 1.75em;
-  margin-top: 32px;
+  margin-top: var(--space-m);
 }
 
 .section-column h2{
@@ -40,13 +36,13 @@
 @media screen and (max-width:1200px){
   
   .columns-container h1{
-    padding: 32px;
+    padding: var(--space-m);
   }
 
   .section-column {
     display: block;
   }
   .column{
-    padding: 32px;
+    padding: var(--space-m);
   }
 }

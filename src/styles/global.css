@@ -10,18 +10,8 @@
   font-family: "Libre Franklin", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
-
-    --yellow: #E1B627;
-    --green: #2B643F;
-    --red: #F04C32;
-    --melon: #F5886F;
-    --blue: #1F54A5;
-    --black: #1F252B;
-    --white: #DFDED7;
-    --pink: #F27DAC;
-    
-    background-color: var(--white);
-    color: var(--black);
+  background-color: var(--white);
+  color: var(--black);
 }
 
 body {
@@ -57,4 +47,11 @@ a:hover{
 
 img{
   object-fit: contain;
+}
+
+/* Centers content at the site's max width. */
+.container{
+  max-width: var(--content-width);
+  margin-left: auto;
+  margin-right: auto;
 }

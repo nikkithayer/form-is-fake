@@ -2,7 +2,6 @@ import Section from './Components/Section/Section'
 import Columns from './Components/Columns/Columns'
 import Header from './Components/Header/Header'
 import SignUpForm from './Components/SignUp/SignUpForm'
-import './App.css'
 import { auth, db } from './firebase-config'
 import { collection, addDoc, Timestamp } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-firestore.js"
 import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-auth.js"

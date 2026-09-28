@@ -1,0 +1,24 @@
+/* Design tokens: the single place to change colors, widths, and spacing. */
+:root {
+  --yellow: #E1B627;
+  --green: #2B643F;
+  --red: #F04C32;
+  --melon: #F5886F;
+  --blue: #1F54A5;
+  --black: #1F252B;
+  --white: #DFDED7;
+  --pink: #F27DAC;
+
+  --content-width: 1200px;
+  /* Mobile breakpoint is also 1200px, but CSS variables can't be used in
+     media queries, so it's written out in each @media rule. */
+
+  --space-xs: 8px;
+  --space-s: 16px;
+  --space-m: 32px;
+  --space-l: 48px;
+  --space-xl: 60px;
+
+  --radius-s: 3px;
+  --radius-pill: 3em;
+}

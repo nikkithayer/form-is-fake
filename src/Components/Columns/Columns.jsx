@@ -36,7 +36,7 @@ function Columns() {
     <>
     <div className="columns-container">
       <h1>What else have ya got?</h1>
-    <div className="section-column">
+    <div className="section-column container">
       <Column columnInfo={palamoDrafthouse} />
       <Column columnInfo={danceParty} />
       <Column columnInfo={greatestParty} />

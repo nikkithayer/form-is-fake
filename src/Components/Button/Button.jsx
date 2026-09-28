@@ -24,16 +24,16 @@ const aboutRedirect = (e) => {
 
     if (buttonFunction === 'route') {
       return (
-      <button onClick={aboutRedirect}>{linkText}</button>
+      <button className="btn" onClick={aboutRedirect}>{linkText}</button>
     )
     }
     else if (buttonFunction === 'scroll') {
       return (
-      <button onClick={scrollTo}>{linkText}</button>
+      <button className="btn" onClick={scrollTo}>{linkText}</button>
     )
     }
     else return (
-      <button onClick={() => openInNewTab({link})}>{linkText}</button>
+      <button className="btn" onClick={() => openInNewTab({link})}>{linkText}</button>
     );
 }
 

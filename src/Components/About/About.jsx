@@ -6,7 +6,7 @@ function About() {
   return (
     <>
     <Header />
-    <div className='about'>
+    <div className='about container'>
       <h1>About Us</h1>
       <img src="/nikkianddavid.jpg" />
     <p>David Daw is a writer, developer and TTRPG designer who simply cannot stop throwing themed, experience design centric parties, the first being an iteration of Dance Party at the End of the World in 2006.</p>

@@ -1,6 +1,6 @@
 .header{
   background-image: url(/noise.png);
-  padding: 48px;
+  padding: var(--space-l);
 }
 
 .header img{

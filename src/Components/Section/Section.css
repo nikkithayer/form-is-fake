@@ -1,6 +1,6 @@
 .section {
   width: 100%;
-  padding: 32px 0;
+  padding: var(--space-m) 0;
 }
 
 .section:nth-child(1){
@@ -16,8 +16,6 @@
 }
 
 .section .holder{
-  max-width: 1200px;
-  margin: 0 auto;
   display:flex;
   flex-direction: row-reverse;
   flex-wrap: wrap;
@@ -32,10 +30,10 @@
   flex: auto;
   width: 620px;
   text-align: left;
-  padding: 60px 32px;
+  padding: var(--space-xl) var(--space-m);
 }
 
-.section:nth-child(1) button{
+.section:nth-child(1) .btn{
   background-color: var(--pink);
   color: var(--white);
 }
@@ -44,7 +42,7 @@
   color: var(--pink);
 }
 
-.section:nth-child(2) button{
+.section:nth-child(2) .btn{
   background-color: var(--melon);
   color: var(--white)
 }
@@ -53,7 +51,7 @@
   color: var(--melon);
 }
 
-.section:nth-child(3) button{
+.section:nth-child(3) .btn{
   background-color: var(--yellow);
   color: var(--black)
 }
@@ -67,8 +65,7 @@
     padding: 0;
   }
 
-  img{
-    margin: 0 auto;
+  .section img{
     width: 100%;
   }
 }

@@ -6,7 +6,8 @@ import {
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import About from './Components/About/About.jsx'
-import './index.css'
+import './styles/tokens.css'
+import './styles/global.css'
 
 const router = createBrowserRouter([
   {

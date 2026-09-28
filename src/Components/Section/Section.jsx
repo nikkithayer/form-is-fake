@@ -17,7 +17,7 @@ function Section({ProjectInfo}) {
   return (
     <>
       <div className="section">
-        <div className="holder">
+        <div className="holder container">
         {image && <img src={image} />}
         <div className="content">
             <h1>{title}</h1>

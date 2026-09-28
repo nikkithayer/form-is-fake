@@ -1,17 +1,17 @@
 .about{
-  max-width: 1200px;
-  margin: 60px auto;
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-xl);
   display:flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  padding: 0 32px;
+  padding: 0 var(--space-m);
 }
 .about h1{
   color: var(--red);
   width: 100%;
   text-align: left;
-  margin-bottom: 32px;
+  margin-bottom: var(--space-m);
 }
 .about p{
   text-align: left;

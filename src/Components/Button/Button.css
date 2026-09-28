@@ -1,5 +1,6 @@
-button {
-  border-radius: 3em;
+/* Base look for every button; Section and SignUpForm set the colors. */
+.btn {
+  border-radius: var(--radius-pill);
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
@@ -13,10 +14,10 @@ button {
   cursor: pointer;
   transition: scale 0.25s;
 }
-button:hover {
+.btn:hover {
   scale: 103%;
 }
-button:focus,
-button:focus-visible {
+.btn:focus,
+.btn:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
