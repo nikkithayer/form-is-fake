@@ -1,12 +1,22 @@
 .footer{
-  background-color: var(--white);
-  color: var(--black);
+  position: relative;
+  color: var(--white);
   padding: var(--space-m);
   /* Room for the signup section's angled cut above. */
   padding-top: calc(var(--space-m) + var(--cut-clearance));
 }
 
+/* Text sits above the static. */
+.footer-content{
+  position: relative;
+  z-index: 1;
+  font-weight: 600;
+}
+
+.footer a{
+  color: var(--yellow);
+}
+
 .footer-small{
   font-size: 0.8em;
-  opacity: 0.7;
 }

@@ -1,5 +1,6 @@
 import Button from '../Button/Button'
 import Paragraphs from '../Paragraphs/Paragraphs'
+import Marquee from '../Marquee/Marquee'
 import { projectPropTypes } from '../../content/propTypes'
 import { angleStyle } from '../../utils/angle'
 import './Section.css'
@@ -8,7 +9,7 @@ import './sections.css'
 // One project section. The `layout` from home.js arranges the art
 // and text; the `section--{id}` class lets sections.css give each section its own
 // artwork, colors, and motion. Sections without an image are always text-only.
-function Section ({id, title, subtitle, body, image, imageAlt, photos, cta, layout = 'art-left'}) {
+function Section ({id, title, subtitle, body, image, imageAlt, photos, cta, marquee, layout = 'art-left'}) {
   const arrangement = image ? layout : 'text-only'
 
   return (
@@ -33,6 +34,7 @@ function Section ({id, title, subtitle, body, image, imageAlt, photos, cta, layo
           ))}
         </ul>
       )}
+      {marquee && <Marquee {...marquee} />}
     </section>
   )
 }

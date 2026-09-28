@@ -1,12 +1,18 @@
 /* Kept compact so Now Playing is the first big thing on the page. */
 .header{
-  background-image: url(/noise.png);
+  position: relative;
   padding: var(--space-s) var(--space-m);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-s);
+}
+
+/* Logo and menu sit above the static. */
+.header > :not(.tv-static){
+  position: relative;
+  z-index: 1;
 }
 
 .header img{
@@ -33,5 +39,21 @@
 }
 
 .header-nav a:hover{
+  color: var(--red);
+}
+
+/* "What on earth?": a little off-kilter, like a label slapped on. */
+.header-nav .header-tagline{
+  display: inline-block;
+  rotate: -4deg;
+  color: var(--yellow);
+  font-size: 1.25em;
+  font-weight: 800;
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.header-nav .header-tagline:hover{
   color: var(--red);
 }

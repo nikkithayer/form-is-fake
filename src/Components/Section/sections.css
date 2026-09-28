@@ -15,10 +15,15 @@
   position: relative;
   z-index: 2; /* above the angled cuts, so art can spill across them */
 }
-/* Text always stays on top, so spilling art never covers it. */
+/* Text always stays on top, on a half-see-through panel of the section's
+   own color, so spilling art never makes it hard to read. The negative
+   margin keeps the text where it was. */
 .section-text{
   position: relative;
   z-index: 3;
+  padding: var(--space-s);
+  margin: calc(-1 * var(--space-s));
+  background-color: color-mix(in srgb, var(--section-bg, var(--white)) 50%, transparent);
 }
 
 .section--iron-city{
@@ -26,20 +31,24 @@
   color: var(--white);
 }
 .section--iron-city .title{ color: var(--melon); }
+.section--iron-city .subtitle{ color: var(--white); }
 
 .section--dance-party{
   --section-bg: var(--black);
   color: var(--white);
 }
-/* The red spiral slowly turning behind the key art (decorative only). */
+.section--dance-party .subtitle{ color: var(--red); }
+/* The red spiral slowly turning behind the key art (decorative only).
+   Its left edge lines up with the art's, so it stays out of the text
+   column and bleeds off the right side of the page instead. */
 .section--dance-party .section-art::before{
   content: "";
   position: absolute;
   top: 50%;
-  left: 50%;
-  width: 150%;
+  left: 0;
+  width: 140%;
   aspect-ratio: 1;
-  translate: -50% -50%;
+  translate: 0 -50%;
   z-index: -1;
   background: url(/danceparty-spiral.svg) center / contain no-repeat;
   animation: spin 60s linear infinite;
@@ -47,6 +56,20 @@
 @media (prefers-reduced-motion: reduce){
   .section--dance-party .section-art::before{
     animation: none;
+  }
+}
+/* On narrower screens the text sits below the art: keep the spiral centered
+   and closer to the art's size so it doesn't run into the paragraphs or up
+   past the Iron City tape. The art box shrinks to the image's width, so the
+   spiral is sized against the picture rather than the full page width. */
+@media screen and (max-width:1200px){
+  .section--dance-party .section-art{
+    justify-self: start;
+  }
+  .section--dance-party .section-art::before{
+    left: 50%;
+    width: 100%;
+    translate: -50% -50%;
   }
 }
 
@@ -66,6 +89,7 @@
   color: var(--white);
 }
 .section--reverse-murder-mystery .title{ color: var(--yellow); }
+.section--reverse-murder-mystery .subtitle{ color: var(--white); }
 
 .section--beach-episode{
   --section-bg: var(--black);

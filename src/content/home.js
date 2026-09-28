@@ -14,6 +14,8 @@
     cta       Optional button: { label: "Button text", href: "..." }
               href can be a spot on this page ("#signup"), a page on this
               site ("/about"), or any other URL (opens in a new tab).
+    marquee   Optional ticker along the section's angled bottom edge:
+              { title: "Overheard at ...", items: ["quote", "quote"] }
     layout    Where the art sits: "art-left" (the default), "art-right", or
               "art-top" (full width above the text, for wide art). Sections
               without an image are text-only. On phones, art is always on top.
@@ -22,6 +24,9 @@
   Links inside body text follow the same rules as cta hrefs.
   Sections appear in the order listed here.
 */
+
+// The tilted menu link to the About section, in the header.
+export const tagline = { label: "What on earth?", href: "#about" }
 
 export const instagram = {
   handle: "@formisfake",
@@ -51,29 +56,43 @@ export const projects = [
   {
     id: "reverse-murder-mystery",
     title: "Reverse Murder Mystery Party",
-    // TODO: real description, year, and artwork.
+    subtitle: "(2024)",
     body: [
-      "Details coming soon.",
+      "You know how it goes. You’re having a normal party at the home of a deranged millionaire when suddenly he dies... of MURDER. But this time, the deceased made an unusual request: if an attendee can prove they killed him, they win and inherit his millions.",
+      "All Nikki wanted for her 40th birthday was to bring her friends together and give them permission to get silly. Guests were given characters, relationships, weapons, and breakaway glass props with one goal: give the most dramatic confession... to MURDER. (Guests who were less comfortable with improv were given cocktails and a safe viewing distance.)",
+      "Lasting friendships were made, wine bottles were shattered, and people started asking “When will you be doing this again?”",
     ],
+    // TODO: replace the placeholder with real artwork.
+    image: "/reverse-murder-mystery-placeholder.svg",
+    imageAlt: "Placeholder art reading “Reverse Murder Mystery Party”",
+    layout: "art-right",
   },
   {
     id: "iron-city",
     title: "Iron City",
+    subtitle: "(2026-?)",
     body: [
-      "Iron City is an immersive experience that takes place in a world where the Fae have returned and you need to help a lawfirm dealing with magical contract law.",
-      "Guests will explore a world of fairies, magic, and legal jargon in our first ever open to the public immersive show.",
-      "It's as much fun as you can have with the legal profession...Legally!",
+      "We staged a small version of our immersive experience set in a world where the Fae walk the earth and create massive legal headaches as part of *Encounter*, a group show curated by Layna Fisher and Adam Smith.",
+      "Guests stumbled on a filing room that had been shrunk and warped through space and time by a fairy prank. Calling a phone number amongst the tangle of documents led guests to an in-person encounter with the head of Greystone Canning, who guided them through a short warding ritual.",
     ],
     image: "/ironcity.png",
     imageAlt: "A glowing fairy hand reaches toward a wireframe sculpture over a desk of legal paperwork and a Greystone/Canning “Fae Arbitration Experts” mug",
     layout: "art-left",
+    marquee: {
+      title: "Overheard at Iron City",
+      items: [
+        "“So I called this phone number… and someone talked me through finding all these things… and helping the fairies…”",
+        "“Really? No way?”",
+        "“Yeah I’m having the greatest day of my life.”",
+      ],
+    },
   },
   {
     id: "dance-party",
     title: "Dance Party at the End of the World",
     subtitle: "(2006-?)",
     body: [
-      "Every October, from 2006 to 2013 David Daw held a dance party with a twist - the radio broadcast from Orson Welles’ War of the Worlds is real, and the world is about to end.",
+      "Every October from 2006 to 2013 David threw a dance party with a high concept premise - the radio broadcast from Orson Welles’ War of the Worlds is real. The world is about to end, so party tonight like it’s your last party on earth.",
       "Over 8 years, the production expanded to include sketches, interactive tech, and a punch bowl set on fire (which ruled).",
       "Attendees were given backstories and relationships to other partygoers, encouraging strangers to meet. “Enemies” became friends, friends tore it up on the dance floor, and the world just barely made it through another alien invasion again.",
     ],

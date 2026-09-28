@@ -21,6 +21,10 @@ export const projectPropTypes = {
   })),
   cta: ctaShape,
   layout: PropTypes.oneOf(['art-left', 'art-right', 'art-top']),
+  marquee: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    items: PropTypes.arrayOf(PropTypes.string).isRequired,
+  }),
 }
 
 // A show in nowPlaying.json.

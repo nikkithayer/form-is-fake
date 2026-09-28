@@ -1,0 +1,96 @@
+/*
+  The strip lies along the section's angled cut (see styles/angled.css).
+  Its centerline starts at the cut's left depth; Marquee.jsx measures the
+  cut and sets --marquee-angle and --marquee-length to match it at any width.
+  It overhangs both page edges a little so the rotated ends never show a gap.
+*/
+.marquee{
+  --marquee-height: 48px;
+  --marquee-overhang: 24px;
+  position: absolute;
+  left: calc(-1 * var(--marquee-overhang));
+  top: calc(100% + var(--cut-l, 0px) - var(--marquee-height) / 2);
+  width: calc(var(--marquee-length, 100%) + 2 * var(--marquee-overhang));
+  height: var(--marquee-height);
+  z-index: 3; /* above the cuts and above the next section's spilling art */
+  transform-origin: var(--marquee-overhang) center;
+  rotate: var(--marquee-angle, 0deg);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background-color: var(--yellow);
+  color: var(--black);
+  text-align: left;
+}
+
+/* Invisible rulers sized to the cut depths, read by Marquee.jsx. */
+.marquee-probe{
+  position: absolute;
+  height: 0;
+  visibility: hidden;
+}
+.marquee-probe--left{ width: var(--cut-l, 0px); }
+.marquee-probe--right{ width: var(--cut-r, 0px); }
+
+.marquee-track{
+  display: flex;
+  width: max-content;
+  animation: marquee 90s linear infinite;
+}
+
+.marquee:hover .marquee-track{
+  animation-play-state: paused;
+}
+
+.marquee-group{
+  display: flex;
+  align-items: baseline;
+  flex-shrink: 0;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.marquee-title{
+  margin: 0 var(--space-m) 0 var(--space-l);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.marquee-item{
+  font-style: italic;
+  margin-right: var(--space-m);
+}
+
+/* A small divider between quotes. */
+.marquee-item + .marquee-item::before{
+  content: "✦";
+  font-style: normal;
+  margin-right: var(--space-m);
+}
+
+/* The track holds four copies of the text; moving it half its width
+   brings copy three to where copy one started, so the loop is seamless. */
+@keyframes marquee{
+  to{ translate: -50% 0; }
+}
+
+/* No motion: show the text once, wrapping onto more lines as needed. */
+@media (prefers-reduced-motion: reduce){
+  .marquee{
+    height: auto;
+    min-height: var(--marquee-height);
+    padding: var(--space-xs) 0;
+  }
+  .marquee-track{
+    width: auto;
+    animation: none;
+  }
+  .marquee-group{
+    flex-wrap: wrap;
+    white-space: normal;
+    padding-right: var(--space-m);
+  }
+  .marquee-group[aria-hidden]{
+    display: none;
+  }
+}
