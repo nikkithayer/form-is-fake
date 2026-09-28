@@ -2,29 +2,8 @@ import Section from './Components/Section/Section'
 import Columns from './Components/Columns/Columns'
 import Header from './Components/Header/Header'
 import SignUpForm from './Components/SignUp/SignUpForm'
-import { auth, db } from './firebase-config'
-import { collection, addDoc, Timestamp } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-firestore.js"
-import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-auth.js"
-
 
 function App() {
-
-  signInAnonymously(auth)
-  .then(() => {
-    console.log(auth)
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // ...
-  });
-
-  const entriesCollectionRef = collection(db, "Signups")
-
-  const Signup = async (newLog) => {
-    await addDoc(entriesCollectionRef, newLog)
-  }
-
 
   const BeachEpisode = {
     title: "Beach Episode",
@@ -60,7 +39,7 @@ function App() {
       <Section ProjectInfo={IronCity} />
       <Section ProjectInfo={BeachEpisode} />
       <Columns />
-      <SignUpForm Signup={Signup} />
+      <SignUpForm />
     </div>
     </>
   )

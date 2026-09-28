@@ -1,10 +1,6 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-app.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-firestore.js"
-import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-auth.js"
-
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { initializeApp } from "firebase/app"
+import { getFirestore, collection, addDoc } from "firebase/firestore"
+import { getAuth, signInAnonymously } from "firebase/auth"
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -21,3 +17,13 @@ const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app)
 export const db = getFirestore(app)
+
+// Sign in once when the module loads; signups wait on this before writing.
+const signedIn = signInAnonymously(auth)
+
+const signupsRef = collection(db, "Signups")
+
+export async function addSignup(newSignup) {
+  await signedIn
+  await addDoc(signupsRef, newSignup)
+}
