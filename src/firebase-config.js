@@ -1,3 +1,5 @@
+// Loaded only when someone submits the signup form (see SignUpForm.jsx), so
+// visitors who never sign up don't download Firebase or create an account.
 import { initializeApp } from "firebase/app"
 import { getFirestore, collection, addDoc } from "firebase/firestore"
 import { getAuth, signInAnonymously } from "firebase/auth"
@@ -14,16 +16,18 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const auth = getAuth(app)
+const signupsRef = collection(getFirestore(app), "Signups")
 
-export const auth = getAuth(app)
-export const db = getFirestore(app)
-
-// Sign in once when the module loads; signups wait on this before writing.
-const signedIn = signInAnonymously(auth)
-
-const signupsRef = collection(db, "Signups")
+// Sign in anonymously once, on the first signup; the Firestore rules only
+// accept writes from signed-in users. A failed sign-in can be retried.
+let signedIn = null
 
 export async function addSignup(newSignup) {
+  signedIn ??= signInAnonymously(auth).catch((error) => {
+    signedIn = null
+    throw error
+  })
   await signedIn
   await addDoc(signupsRef, newSignup)
 }

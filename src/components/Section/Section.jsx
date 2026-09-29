@@ -2,7 +2,7 @@ import Button from '../Button/Button'
 import Paragraphs from '../Paragraphs/Paragraphs'
 import Marquee from '../Marquee/Marquee'
 import { projectPropTypes } from '../../content/propTypes'
-import { angleStyle } from '../../utils/angle'
+import AngledSection from '../AngledSection/AngledSection'
 import './Section.css'
 import './sections.css'
 
@@ -13,7 +13,7 @@ function Section ({id, title, subtitle, body, image, imageAlt, photos, cta, marq
   const arrangement = image ? layout : 'text-only'
 
   return (
-    <section id={id} className={`section section--${id} angled`} style={angleStyle(id)}>
+    <AngledSection id={id} className={`section section--${id}`}>
       <div className={`section-inner section-inner--${arrangement} container`}>
         {image && (
           <div className="section-art">
@@ -35,7 +35,7 @@ function Section ({id, title, subtitle, body, image, imageAlt, photos, cta, marq
         </ul>
       )}
       {marquee && <Marquee {...marquee} />}
-    </section>
+    </AngledSection>
   )
 }
 

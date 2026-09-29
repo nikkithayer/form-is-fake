@@ -3,7 +3,6 @@
 #root {
   margin: 0 auto;
   padding: 0;
-  text-align: center;
   width: 100%;
   min-height: 100vh;
   line-height: 1.4;
@@ -18,7 +17,6 @@
 body {
   margin: 0;
   min-width: 320px;
-  min-height: 100vh;
 }
 
 h1, .title{
@@ -44,10 +42,6 @@ a{
 
 a:hover{
   color: var(--pink);
-}
-
-img{
-  object-fit: contain;
 }
 
 /* Hidden visually but still read by screen readers. */

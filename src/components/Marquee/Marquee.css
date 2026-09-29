@@ -1,38 +1,57 @@
-/* The band itself. Colors can be overridden per use with a className. */
+/*
+  The strip lies along the section's angled cut (see AngledSection.css). Its
+  centerline starts at the cut's left depth; Marquee.jsx measures the cut and
+  sets --marquee-angle and --marquee-length to match at any width. It
+  overhangs both page edges a little so the rotated ends never show a gap.
+  Colors can be overridden per use with a className.
+*/
 .marquee{
-  --marquee-height: 48px;
+  --marquee-overhang: 24px;
   position: absolute;
+  left: calc(-1 * var(--marquee-overhang));
+  top: calc(100% + var(--cut-l, 0px) - var(--marquee-height) / 2);
+  width: calc(var(--marquee-length, 100%) + 2 * var(--marquee-overhang));
   height: var(--marquee-height);
   z-index: 3; /* above the cuts and above the next section's spilling art */
+  transform-origin: var(--marquee-overhang) center;
+  rotate: var(--marquee-angle, 0deg);
   overflow: hidden;
   display: flex;
   align-items: center;
   background-color: var(--yellow);
   color: var(--black);
-  text-align: left;
 }
 
-/*
-  Bottom edge: the strip lies along the section's angled cut (see
-  styles/angled.css). Its centerline starts at the cut's left depth;
-  Marquee.jsx measures the cut and sets --marquee-angle and --marquee-length
-  to match at any width. It overhangs both page edges a little so the rotated
-  ends never show a gap.
-*/
-.marquee--bottom{
-  --marquee-overhang: 24px;
-  left: calc(-1 * var(--marquee-overhang));
-  top: calc(100% + var(--cut-l, 0px) - var(--marquee-height) / 2);
-  width: calc(var(--marquee-length, 100%) + 2 * var(--marquee-overhang));
-  transform-origin: var(--marquee-overhang) center;
-  rotate: var(--marquee-angle, 0deg);
-}
-
-/* Top edge: flat along the top of the section. */
+/* Flat along the top of the section instead. */
 .marquee--top{
   top: 0;
   left: 0;
   width: 100%;
+  rotate: none;
+}
+
+/* In the page flow, stretched to the page edges past the section's side
+   padding (--marquee-bleed, default --space-m). */
+.marquee--inline{
+  position: relative;
+  top: auto;
+  left: auto;
+  width: auto;
+  rotate: none;
+  margin-inline: calc(-1 * var(--marquee-bleed, var(--space-m)));
+}
+
+/* A label repeated as a ticker ("Now playing", "Previous projects"):
+   bold spaced-out caps with no separators. Set colors per use. */
+.marquee-label .marquee-item{
+  font-style: normal;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-right: var(--space-l);
+}
+.marquee-label .marquee-item + .marquee-item::before{
+  content: none;
 }
 
 /* Invisible rulers sized to the cut depths, read by Marquee.jsx. */
@@ -48,10 +67,6 @@
   display: flex;
   width: max-content;
   animation: marquee 90s linear infinite;
-}
-
-.marquee--reverse .marquee-track{
-  animation-direction: reverse;
 }
 
 .marquee:hover .marquee-track{

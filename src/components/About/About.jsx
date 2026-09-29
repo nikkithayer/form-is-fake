@@ -1,12 +1,12 @@
 import Paragraphs from '../Paragraphs/Paragraphs'
 import { about } from '../../content/about'
-import { angleStyle } from '../../utils/angle'
+import AngledSection from '../AngledSection/AngledSection'
 import './About.css'
 
 // The About section at the bottom of the page (old /about links redirect here).
 function About() {
   return (
-    <section id="about" className="about angled" style={angleStyle('about')}>
+    <AngledSection id="about" className="about">
       <div className="about-inner container">
         <h2 className="title">{about.title}</h2>
         <p className="about-intro">{about.intro}</p>
@@ -20,7 +20,7 @@ function About() {
           </section>
         ))}
       </div>
-    </section>
+    </AngledSection>
   )
 }
 

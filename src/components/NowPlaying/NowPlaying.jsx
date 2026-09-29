@@ -3,10 +3,10 @@ import Button from '../Button/Button'
 import Marquee from '../Marquee/Marquee'
 import { currentShows, formatDay, formatRun } from './showDates'
 import { ctaShape, showShape } from '../../content/propTypes'
-import { angleStyle } from '../../utils/angle'
+import AngledSection from '../AngledSection/AngledSection'
 import './NowPlaying.css'
 
-// The ticker along the bottom says what's on; a show only gets its own tag
+// The ticker along the top says what's on; a show only gets its own tag
 // when it adds something: an upcoming run's opening date, or "Just wrapped"
 // on a closed show listed alongside current ones.
 function Show ({show, tag, cta}) {
@@ -55,7 +55,8 @@ function NowPlaying ({shows, title, ticketLabel, wrapped, empty}) {
   }
 
   return (
-    <section id="now-playing" className="now-playing angled" style={angleStyle('now-playing')}>
+    <AngledSection id="now-playing" className="now-playing">
+      {showing.length > 0 && <Marquee edge="top" items={repeated(headline)} decorative className="marquee-label now-playing-marquee" />}
       <div className="container">
         <h2 className="visually-hidden">{title}</h2>
         {showing.length > 0 ? (
@@ -77,8 +78,7 @@ function NowPlaying ({shows, title, ticketLabel, wrapped, empty}) {
           </div>
         )}
       </div>
-      {showing.length > 0 && <Marquee edge="bottom" items={repeated(headline)} decorative className="now-playing-marquee" />}
-    </section>
+    </AngledSection>
   )
 }
 

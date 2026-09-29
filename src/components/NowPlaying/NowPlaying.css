@@ -1,31 +1,19 @@
 .now-playing{
   --section-bg: var(--white);
+  /* Nothing cuts in from above (it's the first section), so it skips the
+     usual clearance the other angled sections leave at the top, leaving
+     room for its ticker instead. */
+  --angled-padding-top: calc(var(--marquee-height) + var(--space-l));
+  --cut-clearance: 0px;
   color: var(--black);
-  padding: var(--space-l) var(--space-m);
-  text-align: left;
+  padding-inline: var(--space-m);
+  padding-bottom: var(--space-l);
 }
 
-/* Nothing cuts in from above (it's the first section), so skip the usual
-   clearance the other angled sections leave at the top. */
-.now-playing.angled{
-  padding-top: var(--space-l);
-}
-
-/* The "Now playing" ticker: red on black, one color throughout. */
+/* The "Now playing" ticker: red on white. */
 .now-playing-marquee{
-  background-color: var(--black);
+  background-color: var(--white);
   color: var(--red);
-}
-.now-playing-marquee .marquee-item{
-  font-style: normal;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  margin-right: var(--space-l);
-}
-/* Just the words, no separators. */
-.now-playing-marquee .marquee-item + .marquee-item::before{
-  content: none;
 }
 
 .show{

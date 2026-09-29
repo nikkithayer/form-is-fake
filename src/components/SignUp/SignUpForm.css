@@ -2,8 +2,7 @@
   --section-bg: var(--black);
   color: var(--white);
   width: 100%;
-  padding: var(--space-m) 0;
-  text-align: left;
+  padding-bottom: var(--space-m);
 }
 
 .signup-form form{

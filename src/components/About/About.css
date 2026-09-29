@@ -1,8 +1,8 @@
 .about{
   --section-bg: var(--white);
-  padding: var(--space-xl) var(--space-m);
+  padding-inline: var(--space-m);
+  padding-bottom: var(--space-xl);
   box-sizing: border-box;
-  text-align: left;
 }
 
 .about .title{

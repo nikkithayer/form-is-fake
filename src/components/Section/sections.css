@@ -6,7 +6,7 @@
   (see Section.css).
 
   Every section has an angled bottom with its own automatic angle. To set one
-  by hand, add --cut-left / --cut-right to its block (see styles/angled.css).
+  by hand, add --cut-left / --cut-right to its block (see AngledSection.css).
   Give each section a --section-bg that contrasts with its neighbors, or the
   angle won't show.
 */
@@ -103,11 +103,12 @@
 .section--greatest-party .subtitle{ color: var(--black); }
 
 .section--reverse-murder-mystery{
-  --section-bg: var(--green);
+  --section-bg: var(--red);
   color: var(--white);
 }
-.section--reverse-murder-mystery .title{ color: var(--yellow); }
-.section--reverse-murder-mystery .subtitle{ color: var(--white); }
+.section--reverse-murder-mystery .title,
+.section--reverse-murder-mystery .subtitle{ color: var(--black); }
+.section--reverse-murder-mystery .section-art img{ filter: grayscale(1); }
 
 .section--beach-episode{
   --section-bg: var(--black);

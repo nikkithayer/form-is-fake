@@ -26,24 +26,26 @@ The dev server runs at http://localhost:5173.
 ## Project structure
 
 ```
-public/               Images and other static files, served from /
-src/
-  main.jsx            Entry point and routes (/about redirects to /#about)
-  App.jsx             Page layout, top to bottom
-  content/            All site text: home.js, about.js, nowPlaying.json
-  firebase-config.js  Firebase setup and addSignup()
+public/                  Images and other static files, served from /
 scripts/
-  now-playing.mjs     Imports a show from an Eventbrite or Luma link
-  Components/         One folder per component, each with its own CSS
-  Components/Section/sections.css  Each project section's own look
+  now-playing.mjs        Imports a show from an Eventbrite or Luma link
+src/
+  main.jsx               Entry point and routes (/about redirects to /#about)
+  App.jsx                Page layout, top to bottom
+  content/               All site text: home.js, about.js, nowPlaying.json
+  components/            One folder per component, each with its own CSS
+    AngledSection/       Wrapper that gives a section its slanted bottom edge
+    Section/sections.css Each project section's own look
   styles/
-    tokens.css        Design tokens: colors, spacing, radii, widths
-    global.css        Base element styles and shared classes
+    tokens.css           Design tokens: colors, spacing, radii, widths
+    global.css           Base element styles and shared classes
+  utils/                 Arrow-key navigation between sections
+  firebase-config.js     Firebase setup and addSignup() (loaded on first submit)
 ```
 
 ## Editing text
 
-All of the site's text lives in `src/content/`. `home.js` has the project sections, the Now Playing wording, the Instagram link, and the signup form text; `about.js` has the About section. To add a project, add an entry to the `projects` list. You don't need to touch any components. The comment at the top of `home.js` lists every field. Set a project's `layout` to `art-left` (the default), `art-right`, or `art-top` to choose where its art sits. To give a new project its own look, add a `.section--<id>` block to `src/Components/Section/sections.css`; that block can also fine-tune the layout with `--section-art-size`, `--section-text-size`, and `--section-align`.
+All of the site's text lives in `src/content/`. `home.js` has the project sections, the Now Playing wording, the Instagram link, and the signup form text; `about.js` has the About section. To add a project, add an entry to the `projects` list. You don't need to touch any components. The comment at the top of `home.js` lists every field. Set a project's `layout` to `art-left` (the default), `art-right`, or `art-top` to choose where its art sits. To give a new project its own look, add a `.section--<id>` block to `src/components/Section/sections.css`; that block can also fine-tune the layout with `--section-art-size`, `--section-text-size`, and `--section-align`.
 
 Paragraphs are written in Markdown, so `*italics*`, `**bold**`, and `[links](https://example.com)` work. Link addresses and button `href`s follow the same rules:
 
@@ -70,12 +72,13 @@ A ticket page usually describes one performance, so pass `--end` for closing nig
 ## Styling
 
 - Use the variables in `src/styles/tokens.css` rather than hard-coded colors or sizes.
+- Page sections use `<AngledSection id="...">` for their slanted bottom edge; see `AngledSection.css` for the settings (background color, cut depths, top spacing). Set a section's side and bottom padding in its own CSS, but not `padding-top`.
 - Heading looks come from classes, not tag names: `.title` for the large bold heading and `.subtitle` for the blue uppercase one. Pick the heading level (`h1`–`h3`) for the page's structure and the class for its look.
 - `.container` centers content at the site's max width, and `.btn` is the shared button style.
 
 ## Newsletter signups
 
-The signup form writes `{ name, email, playtest }` to the `Signups` collection in Firestore after signing the visitor in anonymously. For this to work, the Firebase project needs:
+The signup form writes `{ name, email, playtest }` to the `Signups` collection in Firestore after signing the visitor in anonymously. Firebase is only downloaded, and the visitor only signed in, when someone actually submits the form. For this to work, the Firebase project needs:
 
 - **Anonymous** enabled under Authentication → Sign-in method.
 - Firestore rules that allow signed-in users to `create` documents in `Signups` and deny everything else.

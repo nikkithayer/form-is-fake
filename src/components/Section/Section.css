@@ -13,10 +13,10 @@
   flex-direction: column;
   justify-content: center;
   gap: var(--space-l);
-  padding: var(--space-xl) var(--space-m);
+  padding-inline: var(--space-m);
+  padding-bottom: var(--space-xl);
   box-sizing: border-box;
   overflow-x: clip; /* no sideways scroll, but art can spill across the angled bottom */
-  text-align: left;
 }
 
 .section-inner{
@@ -79,7 +79,7 @@
   gap: var(--space-s);
   overflow-x: auto;
   list-style: none;
-  margin: 0;
+  margin-block: 0; /* side margins come from .container */
   padding: 0;
 }
 
@@ -88,11 +88,29 @@
   border-radius: var(--radius-s);
 }
 
+/* A headline-only band that separates groups of sections
+   (e.g. "Previous Projects" between Now Playing and the projects), shown
+   as a ticker. The extra room on top lets what's playing now breathe
+   before moving on. */
+.section-divider{
+  --section-bg: var(--black);
+  --angled-padding-top: calc(3 * var(--space-xl));
+  color: var(--white);
+  padding-inline: var(--space-m);
+  padding-bottom: var(--space-m);
+}
+
+.section-divider-marquee{
+  background-color: transparent;
+  color: var(--white);
+}
+
 /* On narrow screens every layout stacks: art above text. */
 @media screen and (max-width:1200px){
   .section{
-    padding: var(--space-l) var(--space-m);
+    padding-bottom: var(--space-l);
   }
+
 
   .section .section-inner{
     grid-template-areas: none;

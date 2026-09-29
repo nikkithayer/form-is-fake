@@ -1,6 +1,7 @@
 .footer{
   position: relative;
   color: var(--white);
+  text-align: center;
   padding: var(--space-m);
   /* Room for the signup section's angled cut above. */
   padding-top: calc(var(--space-m) + var(--cut-clearance));

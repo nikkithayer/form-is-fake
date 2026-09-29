@@ -1,0 +1,52 @@
+/*
+  Angled section bottoms, cut-paper style (see AngledSection.jsx).
+
+  Every angled section gets its own default angle automatically. A section's
+  own CSS can set:
+    --section-bg          its background color (the cut uses it too)
+    --cut-left            how far the cut drops below the section on the left, e.g. 40px
+    --cut-right           the same on the right
+    --angled-padding-top  space above its content (default: --space-xl)
+
+  Sections set their own side and bottom padding, but never padding-top:
+  the top is set here, with extra room for the previous section's cut to
+  overlap. Keeping the two apart means it doesn't matter which stylesheet
+  loads first.
+
+  The cut is a separate layer below the section, not a clip, so artwork can
+  spill across the edge: give it `position: relative; z-index: 2`.
+*/
+
+:root{
+  /* The deepest a cut can go (see MAX in angle.js). */
+  --cut-clearance: 150px;
+}
+
+@media screen and (max-width:1200px){
+  :root{
+    --cut-scale: 0.5;
+    --cut-clearance: 75px;
+  }
+}
+
+.angled{
+  --cut-l: calc(var(--cut-left, var(--cut-left-auto, 40px)) * var(--cut-scale, 1));
+  --cut-r: calc(var(--cut-right, var(--cut-right-auto, 120px)) * var(--cut-scale, 1));
+  position: relative;
+  background-color: var(--section-bg, var(--white));
+  padding-top: calc(var(--angled-padding-top, var(--space-xl)) + var(--cut-clearance));
+}
+
+.angled::after{
+  content: "";
+  position: absolute;
+  /* Starts 1px up so no hairline shows between the section and its cut. */
+  top: calc(100% - 1px);
+  left: 0;
+  right: 0;
+  height: calc(max(var(--cut-l), var(--cut-r)) + 1px);
+  z-index: 1;
+  pointer-events: none;
+  background-color: var(--section-bg, var(--white));
+  clip-path: polygon(0 0, 100% 0, 100% calc(var(--cut-r) + 1px), 0 calc(var(--cut-l) + 1px));
+}

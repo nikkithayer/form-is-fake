@@ -2,11 +2,12 @@ import { useLayoutEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import './Marquee.css'
 
-// A ticker strip inside a section. On the "bottom" edge it's laid along the
-// section's angled cut and rotated to match; on the "top" edge it runs flat
-// along the top. The text scrolls slowly on a loop, pauses on hover, and sits
-// still (wrapping onto more lines) for visitors who prefer reduced motion.
-function Marquee ({title, items, edge = 'bottom', reverse = false, decorative = false, className}) {
+// A ticker strip inside a section: laid along the section's angled bottom
+// edge and rotated to match its cut, flat along its top, or inline in the
+// page flow, stretched edge to edge. The text scrolls
+// slowly on a loop, pauses on hover, and sits still (wrapping onto more lines)
+// for visitors who prefer reduced motion.
+function Marquee ({title, items, edge = 'bottom', decorative = false, className}) {
   const stripRef = useRef(null)
   const leftProbe = useRef(null)
   const rightProbe = useRef(null)
@@ -39,7 +40,7 @@ function Marquee ({title, items, edge = 'bottom', reverse = false, decorative = 
     </p>
   )
 
-  const classes = ['marquee', `marquee--${edge}`, reverse && 'marquee--reverse', className].filter(Boolean).join(' ')
+  const classes = ['marquee', edge !== 'bottom' && `marquee--${edge}`, className].filter(Boolean).join(' ')
   // Decorative strips (repeating a heading the section already has) are hidden
   // from screen readers; others are a labelled aside, read once.
   const Strip = decorative ? 'div' : 'aside'
@@ -67,10 +68,9 @@ Marquee.propTypes = {
   // Bold lead-in before the items, e.g. "Overheard at Iron City".
   title: PropTypes.string,
   items: PropTypes.arrayOf(PropTypes.string).isRequired,
-  // "bottom" follows the section's angled cut; "top" runs flat along the top.
-  edge: PropTypes.oneOf(['bottom', 'top']),
-  // Scroll left-to-right instead of right-to-left.
-  reverse: PropTypes.bool,
+  // "bottom" follows the section's angled cut; "top" runs flat along the
+  // top; "inline" sits in the page flow where it's placed.
+  edge: PropTypes.oneOf(['bottom', 'top', 'inline']),
   // Hide from screen readers when it only repeats a heading.
   decorative: PropTypes.bool,
   className: PropTypes.string,

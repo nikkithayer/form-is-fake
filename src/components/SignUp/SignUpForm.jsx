@@ -1,8 +1,7 @@
 import './SignUpForm.css'
 import { useState } from 'react'
 import PropTypes from 'prop-types'
-import { addSignup } from '../../firebase-config'
-import { angleStyle } from '../../utils/angle'
+import AngledSection from '../AngledSection/AngledSection'
 
 function SignUpForm({title, intro, thanks}) {
 
@@ -16,6 +15,8 @@ function SignUpForm({title, intro, thanks}) {
         e.preventDefault()
         setStatus('submitting')
         try {
+            // Firebase is loaded on first submit, not with the page.
+            const { addSignup } = await import('../../firebase-config')
             await addSignup({ name, email, playtest })
             setStatus('submitted')
         } catch (error) {
@@ -25,7 +26,7 @@ function SignUpForm({title, intro, thanks}) {
     }
 
     return (
-        <section className='signup-form-holder angled' id='signup' style={angleStyle('signup')}><div className='signup-form container'>
+        <AngledSection id='signup' className='signup-form-holder'><div className='signup-form container'>
             {status === 'submitted' ? (
                 <h2 className="title">{thanks}</h2>
             ) : (
@@ -49,7 +50,7 @@ function SignUpForm({title, intro, thanks}) {
                 </>
             )}
         </div>
-        </section>
+        </AngledSection>
     )
 }
 

@@ -1,7 +1,7 @@
 // Each angled section gets its own default cut, worked out from its name so
 // no two sections match and a section keeps its angle when the page is
-// reordered. sections.css (or a component's CSS) can override it with
-// --cut-left / --cut-right; see styles/angled.css.
+// reordered. A section's CSS can override it with --cut-left / --cut-right;
+// see AngledSection.css.
 
 const MIN = 24   // shortest side of the cut, px
 const MAX = 150  // longest side of the cut, px

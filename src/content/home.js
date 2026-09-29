@@ -3,7 +3,7 @@
 
   Each project in `projects` becomes a section on the page. Fields:
     id        Short name used in the page address (#iron-city) and to give
-              the section its own styles in Components/Section/sections.css.
+              the section its own styles in components/Section/sections.css.
     title     Heading text.
     subtitle  Small line under the title, like a year.
     body      A list of paragraphs. Each one is Markdown, so you can write
@@ -19,7 +19,7 @@
     layout    Where the art sits: "art-left" (the default), "art-right", or
               "art-top" (full width above the text, for wide art). Sections
               without an image are text-only. On phones, art is always on top.
-              To fine-tune sizes and alignment, see Components/Section/Section.css.
+              To fine-tune sizes and alignment, see components/Section/Section.css.
 
   Links inside body text follow the same rules as cta hrefs.
   Sections appear in the order listed here.
@@ -34,7 +34,7 @@ export const instagram = {
 }
 
 export const nowPlaying = {
-  // The ticker along the bottom of Now Playing (and the section's heading for screen readers).
+  // The ticker along the top of Now Playing (and the section's heading for screen readers).
   title: "Now Playing",
   ticketLabel: "Get tickets",
   // After a show's end date it stays up this many days, with this label on
@@ -52,6 +52,9 @@ export const nowPlaying = {
   },
 }
 
+// The heading between Now Playing and the project sections below it.
+export const projectsHeading = "Previous Projects"
+
 export const projects = [
   {
     id: "reverse-murder-mystery",
@@ -62,9 +65,8 @@ export const projects = [
       "All Nikki wanted for her 40th birthday was to bring her friends together and give them permission to get silly. Guests were given characters, relationships, weapons, and breakaway glass props with one goal: give the most dramatic confession... to MURDER. (Guests who were less comfortable with improv were given cocktails and a safe viewing distance.)",
       "Lasting friendships were made, wine bottles were shattered, and people started asking “When will you be doing this again?”",
     ],
-    // TODO: replace the placeholder with real artwork.
-    image: "/reverse-murder-mystery-placeholder.svg",
-    imageAlt: "Placeholder art reading “Reverse Murder Mystery Party”",
+    image: "/reverse-murder-mystery.jpg",
+    imageAlt: "A guest in a deerstalker hat and plaid cape holds up a stuffed-animal weapon behind a table of crystal glasses and decanters, while two seated guests look on, aghast",
     layout: "art-right",
   },
   {
